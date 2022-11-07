@@ -4,26 +4,44 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public int numeroSalti;
     public float velocitaMovimento;
     public float forzaSalto;
+    public float raggioVerificaTerreno;
+    public Transform verificaTerreno;
+    public LayerMask terreno;
 
+    private int saltiRimasti;
     private bool isDirezioneCorretta = true;
+    private bool isCamminando;
+    private bool isToccaTerra;
+    private bool canSaltare;
     private float direzioneMovimento;
 
     private Rigidbody2D rb;
+    private Animator anim;
 
     /* Unity */
     void Start() {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+        saltiRimasti = numeroSalti;
     }
 
     void Update() {
         VerificaInput();
         VerificaDirezioneMovimento();
+        AggiornaAnimazioni();
+        VerificaSePossibileSaltare();
     }
 
     void FixedUpdate() {
-        ApplicaMovimento();
+        Cammino();
+        VerificaZonaCircostante();
+    }
+
+    void OnDrawGizmos() {
+        Gizmos.DrawWireSphere(verificaTerreno.position, raggioVerificaTerreno);
     }
 
     /* Personali */
@@ -41,13 +59,40 @@ public class PlayerController : MonoBehaviour
         } else if(!isDirezioneCorretta && direzioneMovimento > 0) {
             Rigira();
         }
+
+        if(rb.velocity.x != 0) {
+            isCamminando = true;
+        } else {
+            isCamminando = false;
+        }
     }
 
-    private void ApplicaMovimento() {
-        rb.velocity = new Vector2(velocitaMovimento * direzioneMovimento, rb.velocity.y);
+    private void VerificaZonaCircostante() {
+        isToccaTerra = Physics2D.OverlapCircle(verificaTerreno.position, raggioVerificaTerreno, terreno);
+    }
+
+    private void VerificaSePossibileSaltare() {
+        if(isToccaTerra && rb.velocity.y <= 0) {
+            saltiRimasti = numeroSalti;
+        }
+        if(saltiRimasti <= 0) {
+            canSaltare = false;
+        } else {
+            canSaltare = true;
+        }
+    }
+
+    private void AggiornaAnimazioni() {
+        anim.SetBool("camminando", isCamminando);
+        anim.SetBool("toccaTerra", isToccaTerra);
+        anim.SetFloat("velocitaY", rb.velocity.y);
     }
 
     /* Azioni */
+
+    private void Cammino() {
+        rb.velocity = new Vector2(velocitaMovimento * direzioneMovimento, rb.velocity.y);
+    }
 
     private void Rigira() {
         isDirezioneCorretta = !isDirezioneCorretta;
@@ -55,6 +100,9 @@ public class PlayerController : MonoBehaviour
     }
 
     private void Salto() {
-        rb.velocity = new Vector2(rb.velocity.x, forzaSalto);
+        if(canSaltare) {
+            rb.velocity = new Vector2(rb.velocity.x, forzaSalto);
+            saltiRimasti--;
+        }
     }
 }
