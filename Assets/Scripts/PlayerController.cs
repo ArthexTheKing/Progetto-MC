@@ -84,6 +84,8 @@ public class PlayerController : MonoBehaviour
 
     private void AggiornaAnimazioni() {
         anim.SetBool("camminando", isCamminando);
+        anim.SetBool("toccaTerra", isToccaTerra);
+        anim.SetFloat("velocitaY", rb.velocity.y);
     }
 
     /* Azioni */
