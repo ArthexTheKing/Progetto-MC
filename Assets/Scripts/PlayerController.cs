@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public float velocitaMovimento;
 
+    private bool isDirezioneCorretta = true;
     private float direzioneMovimento;
 
     private Rigidbody2D rb;
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour
 
     void Update() {
         VerificaInput();
+        VerificaDirezioneMovimento();
     }
 
     void FixedUpdate() {
@@ -29,7 +31,22 @@ public class PlayerController : MonoBehaviour
         direzioneMovimento = Input.GetAxisRaw("Horizontal");
     }
 
+    private void VerificaDirezioneMovimento() {
+        if(isDirezioneCorretta && direzioneMovimento < 0) {
+            Rigira();
+        } else if(!isDirezioneCorretta && direzioneMovimento > 0) {
+            Rigira();
+        }
+    }
+
     private void ApplicaMovimento() {
         rb.velocity = new Vector2(velocitaMovimento * direzioneMovimento, rb.velocity.y);
+    }
+
+    /* Azioni */
+
+    private void Rigira() {
+        isDirezioneCorretta = !isDirezioneCorretta;
+        transform.Rotate(0.0f, 180.0f, 0.0f);
     }
 }
