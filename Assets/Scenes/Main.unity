@@ -36197,6 +36197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6261d63dc3904db4d91eeeb99036cc78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numeroSalti: 1
   velocitaMovimento: 10
   forzaSalto: 16
   raggioVerificaTerreno: 0.4

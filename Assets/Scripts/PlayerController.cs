@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public int numeroSalti;
     public float velocitaMovimento;
     public float forzaSalto;
     public float raggioVerificaTerreno;
     public Transform verificaTerreno;
     public LayerMask terreno;
 
+    private int saltiRimasti;
     private bool isDirezioneCorretta = true;
     private bool isCamminando;
     private bool isToccaTerra;
@@ -23,6 +25,7 @@ public class PlayerController : MonoBehaviour
     void Start() {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        saltiRimasti = numeroSalti;
     }
 
     void Update() {
@@ -70,9 +73,12 @@ public class PlayerController : MonoBehaviour
 
     private void VerificaSePossibileSaltare() {
         if(isToccaTerra && rb.velocity.y <= 0) {
-            canSaltare = true;
-        } else {
+            saltiRimasti = numeroSalti;
+        }
+        if(saltiRimasti <= 0) {
             canSaltare = false;
+        } else {
+            canSaltare = true;
         }
     }
 
@@ -94,6 +100,7 @@ public class PlayerController : MonoBehaviour
     private void Salto() {
         if(canSaltare) {
             rb.velocity = new Vector2(rb.velocity.x, forzaSalto);
+            saltiRimasti--;
         }
     }
 }
