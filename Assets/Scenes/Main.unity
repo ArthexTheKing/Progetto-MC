@@ -35938,3 +35938,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocitaMovimento: 10
+  forzaSalto: 16

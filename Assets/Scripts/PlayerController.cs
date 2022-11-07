@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float velocitaMovimento;
+    public float forzaSalto;
 
     private bool isDirezioneCorretta = true;
     private float direzioneMovimento;
@@ -29,6 +30,9 @@ public class PlayerController : MonoBehaviour
 
     private void VerificaInput() {
         direzioneMovimento = Input.GetAxisRaw("Horizontal");
+        if(Input.GetButtonDown("Jump")) {
+            Salto();
+        }
     }
 
     private void VerificaDirezioneMovimento() {
@@ -48,5 +52,9 @@ public class PlayerController : MonoBehaviour
     private void Rigira() {
         isDirezioneCorretta = !isDirezioneCorretta;
         transform.Rotate(0.0f, 180.0f, 0.0f);
+    }
+
+    private void Salto() {
+        rb.velocity = new Vector2(rb.velocity.x, forzaSalto);
     }
 }
