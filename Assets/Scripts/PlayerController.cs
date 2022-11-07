@@ -6,9 +6,14 @@ public class PlayerController : MonoBehaviour
 {
     public float velocitaMovimento;
     public float forzaSalto;
+    public float raggioVerificaTerreno;
+    public Transform verificaTerreno;
+    public LayerMask terreno;
 
     private bool isDirezioneCorretta = true;
     private bool isCamminando;
+    private bool isToccaTerra;
+    private bool canSaltare;
     private float direzioneMovimento;
 
     private Rigidbody2D rb;
@@ -24,10 +29,16 @@ public class PlayerController : MonoBehaviour
         VerificaInput();
         VerificaDirezioneMovimento();
         AggiornaAnimazioni();
+        VerificaSePossibileSaltare();
     }
 
     void FixedUpdate() {
-        ApplicaMovimento();
+        Cammino();
+        VerificaZonaCircostante();
+    }
+
+    void OnDrawGizmos() {
+        Gizmos.DrawWireSphere(verificaTerreno.position, raggioVerificaTerreno);
     }
 
     /* Personali */
@@ -53,8 +64,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void ApplicaMovimento() {
-        rb.velocity = new Vector2(velocitaMovimento * direzioneMovimento, rb.velocity.y);
+    private void VerificaZonaCircostante() {
+        isToccaTerra = Physics2D.OverlapCircle(verificaTerreno.position, raggioVerificaTerreno, terreno);
+    }
+
+    private void VerificaSePossibileSaltare() {
+        if(isToccaTerra && rb.velocity.y <= 0) {
+            canSaltare = true;
+        } else {
+            canSaltare = false;
+        }
     }
 
     private void AggiornaAnimazioni() {
@@ -63,12 +82,18 @@ public class PlayerController : MonoBehaviour
 
     /* Azioni */
 
+    private void Cammino() {
+        rb.velocity = new Vector2(velocitaMovimento * direzioneMovimento, rb.velocity.y);
+    }
+
     private void Rigira() {
         isDirezioneCorretta = !isDirezioneCorretta;
         transform.Rotate(0.0f, 180.0f, 0.0f);
     }
 
     private void Salto() {
-        rb.velocity = new Vector2(rb.velocity.x, forzaSalto);
+        if(canSaltare) {
+            rb.velocity = new Vector2(rb.velocity.x, forzaSalto);
+        }
     }
 }
