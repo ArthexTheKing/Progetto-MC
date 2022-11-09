@@ -7,14 +7,22 @@ public class PlayerController : MonoBehaviour
     public int numeroSalti;
     public float velocitaMovimento;
     public float forzaSalto;
+    public float velocitaScivolataSuMuro;
+    public float forzaDiMovimentoInAria;
+    public float moltiplicatoreAttritoAria;
+    public float moltiplicatoreAltezzaSalto;
     public float raggioVerificaTerreno;
+    public float distanzaVerificaMuro;
     public Transform verificaTerreno;
+    public Transform verificaMuro;
     public LayerMask terreno;
 
     private int saltiRimasti;
     private bool isDirezioneCorretta = true;
     private bool isCamminando;
     private bool isToccaTerra;
+    private bool isToccaMuro;
+    private bool isScivolaSuMuro;
     private bool canSaltare;
     private float direzioneMovimento;
 
@@ -33,6 +41,7 @@ public class PlayerController : MonoBehaviour
         VerificaDirezioneMovimento();
         AggiornaAnimazioni();
         VerificaSePossibileSaltare();
+        VerificaScivolaSuMuro();
     }
 
     void FixedUpdate() {
@@ -42,6 +51,14 @@ public class PlayerController : MonoBehaviour
 
     void OnDrawGizmos() {
         Gizmos.DrawWireSphere(verificaTerreno.position, raggioVerificaTerreno);
+        Gizmos.DrawLine(
+            verificaMuro.position,
+            new Vector3(
+                verificaMuro.position.x + distanzaVerificaMuro,
+                verificaMuro.position.y,
+                verificaMuro.position.z
+            )
+        );
     }
 
     /* Personali */
@@ -50,6 +67,9 @@ public class PlayerController : MonoBehaviour
         direzioneMovimento = Input.GetAxisRaw("Horizontal");
         if(Input.GetButtonDown("Jump")) {
             Salto();
+        }
+        if(Input.GetButtonUp("Jump")) {
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * moltiplicatoreAltezzaSalto);
         }
     }
 
@@ -69,6 +89,7 @@ public class PlayerController : MonoBehaviour
 
     private void VerificaZonaCircostante() {
         isToccaTerra = Physics2D.OverlapCircle(verificaTerreno.position, raggioVerificaTerreno, terreno);
+        isToccaMuro = Physics2D.Raycast(verificaMuro.position, transform.right, distanzaVerificaMuro, terreno);
     }
 
     private void VerificaSePossibileSaltare() {
@@ -82,21 +103,48 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void VerificaScivolaSuMuro() {
+        if(isToccaMuro && !isToccaTerra && rb.velocity.y < 0) {
+            isScivolaSuMuro = true;
+        } else {
+            isScivolaSuMuro = false;
+        }
+    }
+
     private void AggiornaAnimazioni() {
         anim.SetBool("camminando", isCamminando);
         anim.SetBool("toccaTerra", isToccaTerra);
+        anim.SetBool("scivolandoSuMuro", isScivolaSuMuro);
         anim.SetFloat("velocitaY", rb.velocity.y);
     }
 
     /* Azioni */
 
     private void Cammino() {
-        rb.velocity = new Vector2(velocitaMovimento * direzioneMovimento, rb.velocity.y);
+        if(isToccaTerra) {
+            rb.velocity = new Vector2(velocitaMovimento * direzioneMovimento, rb.velocity.y);
+        } else if(!isToccaTerra && !isScivolaSuMuro && direzioneMovimento != 0) {
+            Vector2 forzaDaAggiungere = new Vector2(forzaDiMovimentoInAria * direzioneMovimento, 0);
+            rb.AddForce(forzaDaAggiungere);
+            if(Mathf.Abs(rb.velocity.x) > velocitaMovimento) {
+                rb.velocity = new Vector2(velocitaMovimento * direzioneMovimento, rb.velocity.y);
+            }
+        } else if (!isToccaTerra && !isScivolaSuMuro && direzioneMovimento == 0) {
+            rb.velocity = new Vector2(rb.velocity.x * moltiplicatoreAttritoAria, rb.velocity.y);
+        }
+
+        if(isScivolaSuMuro) {
+            if(rb.velocity.y < -velocitaScivolataSuMuro) {
+                rb.velocity = new Vector2(rb.velocity.x, -velocitaScivolataSuMuro);
+            }
+        }
     }
 
     private void Rigira() {
-        isDirezioneCorretta = !isDirezioneCorretta;
-        transform.Rotate(0.0f, 180.0f, 0.0f);
+        if(!isScivolaSuMuro) {
+            isDirezioneCorretta = !isDirezioneCorretta;
+            transform.Rotate(0.0f, 180.0f, 0.0f);
+        }
     }
 
     private void Salto() {
