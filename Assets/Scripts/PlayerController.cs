@@ -8,6 +8,9 @@ public class PlayerController : MonoBehaviour
     public float velocitaMovimento;
     public float forzaSalto;
     public float velocitaScivolataSuMuro;
+    public float forzaDiMovimentoInAria;
+    public float moltiplicatoreAttritoAria;
+    public float moltiplicatoreAltezzaSalto;
     public float raggioVerificaTerreno;
     public float distanzaVerificaMuro;
     public Transform verificaTerreno;
@@ -117,6 +120,14 @@ public class PlayerController : MonoBehaviour
     private void Cammino() {
         if(isToccaTerra) {
             rb.velocity = new Vector2(velocitaMovimento * direzioneMovimento, rb.velocity.y);
+        } else if(!isToccaTerra && !isScivolaSuMuro && direzioneMovimento != 0) {
+            Vector2 forzaDaAggiungere = new Vector2(forzaDiMovimentoInAria * direzioneMovimento, 0);
+            rb.AddForce(forzaDaAggiungere);
+            if(Mathf.Abs(rb.velocity.x) > velocitaMovimento) {
+                rb.velocity = new Vector2(velocitaMovimento * direzioneMovimento, rb.velocity.y);
+            }
+        } else if (!isToccaTerra && !isScivolaSuMuro && direzioneMovimento == 0) {
+            rb.velocity = new Vector2(rb.velocity.x * moltiplicatoreAttritoAria, rb.velocity.y);
         }
 
         if(isScivolaSuMuro) {
