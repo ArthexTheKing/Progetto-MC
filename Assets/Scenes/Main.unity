@@ -36200,7 +36200,15 @@ MonoBehaviour:
   numeroSalti: 1
   velocitaMovimento: 10
   forzaSalto: 16
+  velocitaScivolataSuMuro: 2
+  forzaDiMovimentoInAria: 15
+  moltiplicatoreAttritoAria: 0.95
+  moltiplicatoreAltezzaSalto: 0.5
   raggioVerificaTerreno: 0.55
+<<<<<<< Updated upstream
+=======
+  distanzaVerificaMuro: 0.6
+>>>>>>> Stashed changes
   verificaTerreno: {fileID: 834978406}
   terreno:
     serializedVersion: 2
