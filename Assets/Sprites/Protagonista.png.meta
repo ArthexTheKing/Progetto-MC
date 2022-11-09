@@ -1698,13 +1698,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Warrior_Sheet-Effect_60
+      name: Wall_Slide_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 264
-        width: 69
-        height: 44
+        x: 16
+        y: 266
+        width: 16
+        height: 35
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1719,13 +1719,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Warrior_Sheet-Effect_61
+      name: Wall_Slide_1
       rect:
         serializedVersion: 2
-        x: 69
-        y: 264
-        width: 69
-        height: 44
+        x: 85
+        y: 266
+        width: 16
+        height: 36
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1740,13 +1740,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Warrior_Sheet-Effect_62
+      name: Wall_Slide_2
       rect:
         serializedVersion: 2
-        x: 138
-        y: 264
-        width: 69
-        height: 44
+        x: 154
+        y: 266
+        width: 16
+        height: 35
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2547,13 +2547,13 @@ TextureImporter:
       Warrior_Sheet-Effect_91: -2106872485169043283
       Fall_1: -6199907869733816761
       Warrior_Sheet-Effect_73: -5219189033981844993
-      Warrior_Sheet-Effect_62: -5110843521143403644
       Warrior_Sheet-Effect_93: -8491356359149837760
       Warrior_Sheet-Effect_53: 8858915403469927737
       Warrior_Sheet-Effect_28: -3728085103066422436
       Warrior_Sheet-Effect_75: -5008098951225157325
       Warrior_Sheet-Effect_64: -8669300221853394086
       Warrior_Sheet-Effect_71: -1175057978942713942
+      Wall_Slide_2: -5110843521143403644
       Warrior_Sheet-Effect_97: -7685447711378399537
       Idle_0: -3318188226485093758
       Warrior_Sheet-Effect_27: 1619122817114066791
@@ -2566,6 +2566,7 @@ TextureImporter:
       Warrior_Sheet-Effect_57: -1765949524758486658
       Jump_To_Fall_0: 3578844115799939244
       Fall_2: -9068822172998705990
+      Wall_Slide_1: -5647377392427310024
       Run_4: -7157502479376193569
       Warrior_Sheet-Effect_87: 1550331120443448429
       Warrior_Sheet-Effect_14: -7879541775824577086
@@ -2576,8 +2577,8 @@ TextureImporter:
       Idle_4: 932576740597027765
       Warrior_Sheet-Effect_51: -8179423753346160949
       Warrior_Sheet-Effect_33: 8758733799639075308
-      Warrior_Sheet-Effect_77: -848416997838638187
       Warrior_Sheet-Effect_52: -1605837713619785204
+      Warrior_Sheet-Effect_77: -848416997838638187
       Jump_1: -8105224185696963899
       Warrior_Sheet-Effect_49: 4778756267546337206
       Warrior_Sheet-Effect_22: -381468241496348146
@@ -2595,9 +2596,8 @@ TextureImporter:
       Warrior_Sheet-Effect_32: 7809884292531708377
       Warrior_Sheet-Effect_65: -8606690382453196554
       Warrior_Sheet-Effect_30: 2138419889203400846
-      Warrior_Sheet-Effect_61: -5647377392427310024
-      Warrior_Sheet-Effect_72: 8396084745013482390
       Warrior_Sheet-Effect_98: 787512443710130017
+      Warrior_Sheet-Effect_72: 8396084745013482390
       Warrior_Sheet-Effect_76: 3500951761227251082
       Run_6: -7195227389596926799
       Warrior_Sheet-Effect_82: -2437237654950474820
@@ -2607,17 +2607,17 @@ TextureImporter:
       Idle_1: -1938354968663525734
       Warrior_Sheet-Effect_26: 2833012263988642564
       Warrior_Sheet-Effect_39: -4360246032673291897
-      Warrior_Sheet-Effect_38: 7910466545735013580
+      Jump_To_Fall_1: -8346973252730123848
       Warrior_Sheet-Effect_66: -1003838945947052602
       Protagonista_0: 1218713122
-      Warrior_Sheet-Effect_78: -1594377132886445991
-      Jump_To_Fall_1: -8346973252730123848
+      Warrior_Sheet-Effect_38: 7910466545735013580
       Idle_5: 8053934741035486310
       Warrior_Sheet-Effect_16: -7823500323640422531
+      Warrior_Sheet-Effect_78: -1594377132886445991
+      Wall_Slide_0: 709901728315876072
       Warrior_Sheet-Effect_21: -6253208296904073923
       Warrior_Sheet-Effect_92: -5691269341329648135
       Warrior_Sheet-Effect_95: -7781806043594523482
-      Warrior_Sheet-Effect_60: 709901728315876072
       Warrior_Sheet-Effect_69: 2127461698910248042
       Warrior_Sheet-Effect_54: 5335032761891035287
       Warrior_Sheet-Effect_70: 8874842850510428824
