@@ -68,6 +68,9 @@ public class PlayerController : MonoBehaviour
         if(Input.GetButtonDown("Jump")) {
             Salto();
         }
+        if(Input.GetButtonUp("Jump")) {
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * moltiplicatoreAltezzaSalto);
+        }
     }
 
     private void VerificaDirezioneMovimento() {
