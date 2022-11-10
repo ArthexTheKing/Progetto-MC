@@ -8,6 +8,9 @@ public class PlayerController : MonoBehaviour {
     private float jumpTimer;
     private float turnTimer;
     private float wallJumpTimer;
+    private float dashTimeLeft;
+    private float lastImageXpos;
+    private float lastDash = -100f;
 
     private int amountOfJumpsLeft;
     private int facingDirection = 1;
@@ -25,6 +28,7 @@ public class PlayerController : MonoBehaviour {
     private bool canMove;
     private bool canFlip;
     private bool hasWallJumped;
+    private bool isDashing;
 
     private Rigidbody2D rb;
     private Animator anim;
@@ -42,6 +46,10 @@ public class PlayerController : MonoBehaviour {
     public float jumpTimerSet;
     public float turnTimerSet;
     public float wallJumpTimerSet;
+    public float dashTime;
+    public float dashSpeed;
+    public float distanceBetweenImages;
+    public float dashCooldown;
 
     public Vector2 wallJumpDirection;
 
@@ -66,6 +74,7 @@ public class PlayerController : MonoBehaviour {
         CheckIfCanJump();
         CheckIfWallSliding();
         CheckJump();
+        CheckDash();
     }
 
     void FixedUpdate() {
@@ -155,6 +164,12 @@ public class PlayerController : MonoBehaviour {
             checkJumpMultiplier = false;
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * variableJumpHeightMultiplier);
         }
+
+        if(Input.GetButtonDown("Dash")) {
+            if(Time.time >= (lastDash + dashCooldown)) {
+                AttemptToDash();
+            }
+        }
     }
 
     private void CheckJump() {
@@ -178,6 +193,27 @@ public class PlayerController : MonoBehaviour {
                 hasWallJumped = false;
             } else {
                 wallJumpTimer -= Time.deltaTime;
+            }
+        }
+    }
+
+    private void CheckDash() {
+        if(isDashing) {
+            if(dashTimeLeft > 0) {
+                canMove = false;
+                canFlip = false;
+                rb.velocity = new Vector2(dashSpeed * facingDirection, rb.velocity.y);
+                dashTimeLeft -= Time.deltaTime;
+
+                if(Mathf.Abs(transform.position.x - lastImageXpos) > distanceBetweenImages) {
+                    PlayerAfterImagePool.Instance.GetFromPool();
+                    lastImageXpos = transform.position.x;
+                }
+            }
+            if(dashTimeLeft <= 0 || isTouchingWall) {
+                isDashing = false;
+                canMove = true;
+                canFlip = true;
             }
         }
     }
@@ -237,6 +273,14 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
+    private void AttemptToDash() {
+        isDashing = true;
+        dashTimeLeft = dashTime;
+        lastDash = Time.time;
+        PlayerAfterImagePool.Instance.GetFromPool();
+        lastImageXpos = transform.position.x;
+    }
+
     /* Updates */
 
     private void UpdateAnimations() {
@@ -244,5 +288,6 @@ public class PlayerController : MonoBehaviour {
         anim.SetBool("isGrounded", isGrounded);
         anim.SetFloat("yVelocity", rb.velocity.y);
         anim.SetBool("isWallSliding", isWallSliding);
+        anim.SetBool("isDashing", isDashing);
     }
 }
