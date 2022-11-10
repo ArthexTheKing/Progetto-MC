@@ -35889,7 +35889,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.1959653, y: -0.5755234, z: -10.80139}
+  m_LocalPosition: {x: -1.1959653, y: -0.23152351, z: -10.80139}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -35954,7 +35954,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 834978405}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.001, y: -0.963, z: 0}
+  m_LocalPosition: {x: -0.055, y: -0.999, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -36034,7 +36034,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1680183022}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.1959653, y: -0.5755234, z: -10.80139}
+  m_LocalPosition: {x: -1.1959653, y: -0.23152351, z: -10.80139}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -36142,11 +36142,11 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 4
+  m_GravityScale: 6
   m_Material: {fileID: 6200000, guid: e1fbb94185e12a6429b6ac6a12663cee, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!212 &1763831572
 SpriteRenderer:
@@ -36208,7 +36208,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1763831569}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.06, y: 10.995, z: 0}
+  m_LocalPosition: {x: -6.06, y: 11.339, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -36229,22 +36229,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6261d63dc3904db4d91eeeb99036cc78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numeroSalti: 1
-  velocitaMovimento: 10
-  forzaSalto: 16
-  velocitaScivolataSuMuro: 2
-  forzaDiMovimentoInAria: 50
-  forzaSaltinoParete: 10
-  forzaSaltoParete: 20
-  moltiplicatoreAttritoAria: 0.95
-  moltiplicatoreAltezzaSalto: 0.5
-  raggioVerificaTerreno: 0.55
-  distanzaVerificaMuro: 0.6
-  direzioneSaltinoParete: {x: 1, y: 0.5}
-  direzioneSaltoParete: {x: 1, y: 2}
-  verificaTerreno: {fileID: 834978406}
-  verificaMuro: {fileID: 390659975}
-  terreno:
+  amountOfJumps: 1
+  movementSpeed: 9
+  jumpForce: 20
+  groundCheckRadius: 0.3
+  wallCheckDistance: 0.65
+  wallSlideSpeed: 1
+  movementForceInAir: 50
+  airDragMultiplier: 0.95
+  variableJumpHeightMultiplier: 0.5
+  wallHopForce: 10
+  wallJumpForce: 20
+  jumpTimerSet: 0.15
+  turnTimerSet: 0.1
+  wallJumpTimerSet: 0.5
+  wallHopDirection: {x: 1, y: 0.5}
+  wallJumpDirection: {x: 1, y: 2}
+  groundCheck: {fileID: 834978406}
+  wallCheck: {fileID: 390659975}
+  whatIsGround:
     serializedVersion: 2
     m_Bits: 64
 --- !u!95 &1763831575
