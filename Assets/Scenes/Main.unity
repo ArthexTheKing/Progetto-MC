@@ -36233,11 +36233,15 @@ MonoBehaviour:
   velocitaMovimento: 10
   forzaSalto: 16
   velocitaScivolataSuMuro: 2
-  forzaDiMovimentoInAria: 15
+  forzaDiMovimentoInAria: 50
+  forzaSaltinoParete: 10
+  forzaSaltoParete: 20
   moltiplicatoreAttritoAria: 0.95
   moltiplicatoreAltezzaSalto: 0.5
   raggioVerificaTerreno: 0.55
   distanzaVerificaMuro: 0.6
+  direzioneSaltinoParete: {x: 1, y: 0.5}
+  direzioneSaltoParete: {x: 1, y: 2}
   verificaTerreno: {fileID: 834978406}
   verificaMuro: {fileID: 390659975}
   terreno:
