@@ -1,66 +1,84 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
-    
+
+    #region Player States
     public PlayerStateMachine StateMachine { get; private set; }
+
     public PlayerIdleState IdleState { get; private set; }
     public PlayerMoveState MoveState { get; private set; }
     
     [SerializeField]
     private PlayerData playerData;
-    
+    #endregion
+
+    #region Components
     public Animator Anim { get; private set; }
     public PlayerInputHandler InputHandler { get; private set; }
     public Rigidbody2D Rb { get; private set; }
+    #endregion
 
+    #region Other Variables
     public Vector2 CurrentVelocity { get; private set; }
-
     public int FacingDirection { get; private set; }
 
-    
-
     private Vector2 workspace;
+    #endregion
 
-    private void Awake() {
+    #region Unity Callback Functions
+    private void Awake()
+    {
         StateMachine = new PlayerStateMachine();
         IdleState = new PlayerIdleState(this, playerData, StateMachine, "idle");
         MoveState = new PlayerMoveState(this, playerData, StateMachine, "move");
     }
 
-    private void Start() {
+    private void Start()
+    {
         Anim = GetComponent<Animator>();
         InputHandler = GetComponent<PlayerInputHandler>();
         Rb = GetComponent<Rigidbody2D>();
-        StateMachine.Initialize(IdleState);
         FacingDirection = 1;
+        StateMachine.Initialize(IdleState);
     }
 
-    private void Update() {
+    private void Update()
+    {
         CurrentVelocity = Rb.velocity;
         StateMachine.CurrentState.LogicUpdate();
     }
 
-    private void FixedUpdate() {
+    private void FixedUpdate()
+    {
         StateMachine.CurrentState.PhysicsUpdate();
     }
+    #endregion
 
-    private void Flip() {
-        FacingDirection *= -1;
-        transform.Rotate(0.0f, 180.0f, 0.0f);
-    }
-
-    public void SetVelocityX(float velocity) {
+    #region Set Functions
+    public void SetVelocityX(float velocity)
+    {
         workspace.Set(velocity, CurrentVelocity.y);
         Rb.velocity = workspace;
         CurrentVelocity = workspace;
     }
+    #endregion
 
-    public void CheckIfShouldFlip(int xInput) {
-        if(xInput != 0 && xInput != FacingDirection) {
+    #region Check Functions
+    public void CheckIfShouldFlip(int xInput)
+    {
+        if (xInput != 0 && xInput != FacingDirection)
+        {
             Flip();
         }
     }
-    
+    #endregion
+
+    #region Other Functions
+    private void Flip()
+    {
+        FacingDirection *= -1;
+        transform.Rotate(0.0f, 180.0f, 0.0f);
+    }
+    #endregion
+
 }
