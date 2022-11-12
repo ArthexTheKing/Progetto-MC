@@ -1,6 +1,7 @@
 using UnityEngine;
 
-public class Player : MonoBehaviour {
+public class Player : MonoBehaviour
+{
 
     #region Player States
     public PlayerStateMachine StateMachine { get; private set; }
