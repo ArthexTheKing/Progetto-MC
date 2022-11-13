@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-
     #region Player States
     public PlayerStateMachine StateMachine { get; private set; }
 
@@ -81,5 +80,4 @@ public class Player : MonoBehaviour
         transform.Rotate(0.0f, 180.0f, 0.0f);
     }
     #endregion
-
 }
