@@ -2,31 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerGroundedState : PlayerState {
-
+public class PlayerGroundedState : PlayerState
+{
     protected int xInput;
 
-    public PlayerGroundedState(Player player, PlayerData playerData, PlayerStateMachine stateMachine, string animBoolName) : base(player, playerData, stateMachine, animBoolName) { }
+    private bool jumpInput;
 
-    public override void DoChecks() {
-        base.DoChecks();
+    public PlayerGroundedState(Player player, PlayerData playerData, PlayerStateMachine stateMachine, string animBoolName) : base(player, playerData, stateMachine, animBoolName)
+    {
+
     }
 
-    public override void Enter() {
-        base.Enter();
-    }
-
-    public override void Exit() {
-        base.Exit();
-    }
-
-    public override void LogicUpdate() {
+    public override void LogicUpdate()
+    {
         base.LogicUpdate();
         xInput = player.InputHandler.NormInputX;
-    }
+        jumpInput = player.InputHandler.JumpInput;
 
-    public override void PhysicsUpdate() {
-        base.PhysicsUpdate();
+        if(jumpInput)
+        {
+            player.InputHandler.UseJumpInput();
+            stateMachine.ChangeState(player.JumpState);
+        }
     }
 
 }

@@ -8,4 +8,11 @@ public class PlayerData : ScriptableObject
     [Header("Move State")]
     public float movementSpeed;
 
+    [Header("Jump State")]
+    public float jumpVelocity;
+
+    [Header("Check Variables")]
+    public float groundCheckRadius;
+    public LayerMask whatIsGround;
+
 }
