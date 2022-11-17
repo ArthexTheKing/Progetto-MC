@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerGroundedState : PlayerState
 {
     protected int xInput;
+    protected bool isTouchingWall;
 
     private bool jumpInput;
     private bool isGrounded;
@@ -18,6 +19,7 @@ public class PlayerGroundedState : PlayerState
     {
         base.DoChecks();
         isGrounded = player.CheckIfGrounded();
+        isTouchingWall = player.CheckIfTouchingWall();
     }
 
     public override void Enter()

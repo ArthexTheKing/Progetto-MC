@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class PlayerMoveState : PlayerGroundedState {
 
-    public PlayerMoveState(Player player, PlayerData playerData, PlayerStateMachine stateMachine, string animBoolName) : base(player, playerData, stateMachine, animBoolName) { }
+    public PlayerMoveState(Player player, PlayerData playerData, PlayerStateMachine stateMachine, string animBoolName) : base(player, playerData, stateMachine, animBoolName)
+    {
+
+    }
 
     public override void DoChecks() {
         base.DoChecks();
@@ -22,7 +25,7 @@ public class PlayerMoveState : PlayerGroundedState {
         base.LogicUpdate();
         player.CheckIfShouldFlip(xInput);
         player.SetVelocityX(playerData.movementSpeed * xInput);
-        if(xInput == 0) {
+        if(xInput == 0 || isTouchingWall) {
             stateMachine.ChangeState(player.IdleState);
         }
     }

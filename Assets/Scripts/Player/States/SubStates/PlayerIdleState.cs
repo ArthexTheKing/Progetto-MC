@@ -21,7 +21,8 @@ public class PlayerIdleState : PlayerGroundedState {
 
     public override void LogicUpdate() {
         base.LogicUpdate();
-        if(xInput != 0) {
+        player.CheckIfShouldFlip(xInput);
+        if(xInput != 0 && !isTouchingWall) {
             stateMachine.ChangeState(player.MoveState);
         }
     }
