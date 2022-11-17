@@ -44,6 +44,7 @@ public class PlayerGroundedState : PlayerState
             player.InAirState.StartCoyoteTime();
             stateMachine.ChangeState(player.InAirState);
         }
+        player.CheckIfShouldFlip(xInput);
     }
 
 }
