@@ -1698,7 +1698,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_Sprites_60
+      name: Slide_0
       rect:
         serializedVersion: 2
         x: 0
@@ -1719,7 +1719,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_Sprites_61
+      name: Slide_1
       rect:
         serializedVersion: 2
         x: 69
@@ -1740,7 +1740,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_Sprites_62
+      name: Slide_2
       rect:
         serializedVersion: 2
         x: 138
@@ -2533,11 +2533,12 @@ TextureImporter:
       Player_Sprites_79: -466805172
       Player_Sprites_25: 1618296646
       Player_Sprites_78: -1768740352
-      Player_Sprites_62: 1407860534
+      Slide_1: -2010232947
       Player_Sprites_56: -1121499112
       Land_0: 441122551
       Player_Sprites_72: 1737331692
       Jump_0: 1186381885
+      Slide_0: 410603159
       Player_Sprites_88: -1710861775
       Player_Sprites_37: -604809587
       Move_0: -1795309626
@@ -2549,12 +2550,12 @@ TextureImporter:
       Fall_1: 1948358417
       Player_Sprites_39: -2018656331
       Player_Sprites_27: 1979536567
-      Player_Sprites_60: 410603159
       Player_Sprites_55: -522818230
-      Player_Sprites_35: -1162479270
       Move_4: -230636266
+      Player_Sprites_35: -1162479270
       Player_Sprites_76: -432850624
       Player_Sprites_86: -429655723
+      Slide_2: 1407860534
       Player_Sprites_29: -732978578
       Player_Sprites_54: 1354066112
       Player_Sprites_15: -1557125484
@@ -2565,9 +2566,9 @@ TextureImporter:
       Player_Sprites_19: 1584553773
       Player_Sprites_77: 2073155730
       Fall_0: -1906552179
+      Fall_2: 1416155339
       Player_Sprites_18: -754269569
       Move_2: -1045233471
-      Fall_2: 1416155339
       Player_Sprites_98: 961879878
       Move_1: 1516702602
       Player_Sprites_22: 555669834
@@ -2603,7 +2604,6 @@ TextureImporter:
       Player_Sprites_28: 1606109578
       Player_Sprites_26: -492278196
       Player_Sprites_58: -480643223
-      Player_Sprites_61: -2010232947
       Player_Sprites_74: 42495663
       Player_Sprites_49: 1123017077
       Player_Sprites_51: 601736718
@@ -2611,8 +2611,8 @@ TextureImporter:
       Player_Sprites_21: 1683472134
       Idle_1: -1577591054
       Player_Sprites_52: -1199320964
-      Land_2: 672398475
       Land_5: -499901731
+      Land_2: 672398475
       Land_4: 396924407
       Move_5: 2053400732
       Idle_5: -1727622040
