@@ -35580,9 +35580,9 @@ GameObject:
   - component: {fileID: 387496095}
   - component: {fileID: 387496097}
   - component: {fileID: 387496096}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35688,6 +35688,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a244b4273739e0c4fb0f643d16b2877d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerData: {fileID: 11400000, guid: c431bbd99d8fc1046bf812868497ba20, type: 2}
 --- !u!212 &387496094
 SpriteRenderer:
   m_ObjectHideFlags: 0
