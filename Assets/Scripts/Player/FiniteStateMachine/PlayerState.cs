@@ -29,7 +29,7 @@ public class PlayerState
 
     public virtual void Exit()
     {
-
+        player.Anim.SetBool(animBoolName, false);
     }
 
     public virtual void LogicUpdate()
