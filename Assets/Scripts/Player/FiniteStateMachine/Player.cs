@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public PlayerInAirState InAirState { get; private set; }
     public PlayerLandState LandState { get; private set; }
     public PlayerWallSlideState WallSlideState { get; private set; }
+    public PlayerWallJumpState WallJumpState { get; private set; }
     
     [SerializeField]
     private PlayerData playerData;
@@ -49,6 +50,7 @@ public class Player : MonoBehaviour
         InAirState = new PlayerInAirState(this, playerData, StateMachine, "inAir");
         LandState = new PlayerLandState(this, playerData, StateMachine, "land");
         WallSlideState = new PlayerWallSlideState(this, playerData, StateMachine, "wallSlide");
+        WallJumpState = new PlayerWallJumpState(this, playerData, StateMachine, "inAir");
     }
 
     private void Start()
@@ -79,6 +81,15 @@ public class Player : MonoBehaviour
     #endregion
 
     #region Set Functions
+
+    public void SetVelocity(float velocity, Vector2 angle, int direction)
+    {
+        angle.Normalize();
+        workspace.Set(angle.x * velocity * direction, angle.y * velocity);
+        Rb.velocity = workspace;
+        CurrentVelocity = workspace;
+    }
+
     public void SetVelocityX(float velocity)
     {
         workspace.Set(velocity, CurrentVelocity.y);
@@ -103,6 +114,11 @@ public class Player : MonoBehaviour
     public bool CheckIfTouchingWall()
     {
         return Physics2D.Raycast(wallCheck.position, Vector2.right * FacingDirection, playerData.wallCheckDistance, playerData.whatIsGround);
+    }
+
+    public bool CheckIfTouchingWallBack()
+    {
+        return Physics2D.Raycast(wallCheck.position, Vector2.right * -FacingDirection, playerData.wallCheckDistance, playerData.whatIsGround);
     }
 
     public void CheckIfShouldFlip(int xInput)

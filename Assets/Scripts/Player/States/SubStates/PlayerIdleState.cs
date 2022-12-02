@@ -16,7 +16,7 @@ public class PlayerIdleState : PlayerGroundedState {
 
     public override void LogicUpdate() {
         base.LogicUpdate();
-        if(xInput != 0 && !isTouchingWall) {
+        if(xInput != 0 && !isTouchingWall && !isExitingState) {
             stateMachine.ChangeState(player.MoveState);
         }
     }

@@ -7,6 +7,7 @@ public class PlayerWallSlideState : PlayerState
     private int xInput;
     private bool isGrounded;
     private bool isTouchingWall;
+    private bool jumpInput;
 
     public PlayerWallSlideState(Player player, PlayerData playerData, PlayerStateMachine stateMachine, string animBoolName) : base(player, playerData, stateMachine, animBoolName)
     {
@@ -26,18 +27,27 @@ public class PlayerWallSlideState : PlayerState
         base.LogicUpdate();
 
         xInput = player.InputHandler.NormInputX;
+        jumpInput = player.InputHandler.JumpInput;
 
-        if (isGrounded)
+        if(!isExitingState)
         {
-            stateMachine.ChangeState(player.IdleState);
-        }
-        else if (!isTouchingWall || xInput != player.FacingDirection)
-        {
-            stateMachine.ChangeState(player.InAirState);
-        }
-        else
-        {
-            player.SetVelocityY(-playerData.wallSlideVelocity);
+            if(jumpInput)
+            {
+                player.WallJumpState.DetermineWallJumpDirection(isTouchingWall);
+                stateMachine.ChangeState(player.WallJumpState);
+            }
+            else if (isGrounded)
+            {
+                stateMachine.ChangeState(player.IdleState);
+            }
+            else if (!isTouchingWall || xInput != player.FacingDirection)
+            {
+                stateMachine.ChangeState(player.InAirState);
+            }
+            else
+            {
+                player.SetVelocityY(-playerData.wallSlideVelocity);
+            }
         }
         
     }

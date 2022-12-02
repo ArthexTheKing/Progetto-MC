@@ -12,7 +12,7 @@ public class PlayerMoveState : PlayerGroundedState {
     public override void LogicUpdate() {
         base.LogicUpdate();
         player.SetVelocityX(playerData.movementSpeed * xInput);
-        if(xInput == 0 || isTouchingWall) {
+        if((xInput == 0 && !isExitingState) || isTouchingWall) {
             stateMachine.ChangeState(player.IdleState);
         }
     }
