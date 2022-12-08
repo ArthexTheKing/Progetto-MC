@@ -8,9 +8,10 @@ public class PlayerState
     protected PlayerData playerData;
     protected PlayerStateMachine stateMachine;
 
+    protected bool isAnimationFinished;
     protected float startTime;
 
-    private string animBoolName;
+    private readonly string animBoolName;
 
     public PlayerState(Player player, PlayerData playerData, PlayerStateMachine stateMachine, string animBoolName)
     {
@@ -26,26 +27,19 @@ public class PlayerState
         player.Anim.SetBool(animBoolName, true);
         startTime = Time.time;
         Debug.Log(animBoolName);
+        isAnimationFinished = false;
     }
 
-    public virtual void Exit()
-    {
-        player.Anim.SetBool(animBoolName, false);
-    }
+    public virtual void Exit() => player.Anim.SetBool(animBoolName, false);
 
-    public virtual void LogicUpdate()
-    {
+    public virtual void LogicUpdate() { }
 
-    }
+    public virtual void PhysicsUpdate() => DoChecks();
 
-    public virtual void PhysicsUpdate()
-    {
-        DoChecks();
-    }
+    public virtual void DoChecks() { }
 
-    public virtual void DoChecks()
-    {
+    public virtual void AnimationTrigger() { }
 
-    }
+    public virtual void AnimationFinishTrigger() => isAnimationFinished = true;
 
 }

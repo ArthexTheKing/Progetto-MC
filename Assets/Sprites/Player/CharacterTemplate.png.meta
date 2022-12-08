@@ -213,7 +213,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharacterTemplate_4
+      name: Jump_X_0
       rect:
         serializedVersion: 2
         x: 0
@@ -234,7 +234,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharacterTemplate_5
+      name: Jump_X_1
       rect:
         serializedVersion: 2
         x: 64
@@ -255,7 +255,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharacterTemplate_6
+      name: Jump_X_2
       rect:
         serializedVersion: 2
         x: 128
@@ -276,7 +276,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharacterTemplate_7
+      name: Jump_0
       rect:
         serializedVersion: 2
         x: 0
@@ -297,7 +297,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharacterTemplate_8
+      name: Jump_1
       rect:
         serializedVersion: 2
         x: 64
@@ -318,7 +318,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharacterTemplate_9
+      name: Jump_2
       rect:
         serializedVersion: 2
         x: 128
@@ -339,7 +339,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharacterTemplate_10
+      name: Fall_0
       rect:
         serializedVersion: 2
         x: 0
@@ -360,7 +360,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharacterTemplate_11
+      name: Fall_1
       rect:
         serializedVersion: 2
         x: 64
@@ -381,7 +381,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharacterTemplate_12
+      name: Fall_2
       rect:
         serializedVersion: 2
         x: 128
@@ -402,7 +402,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharacterTemplate_13
+      name: Land_0
       rect:
         serializedVersion: 2
         x: 0
@@ -423,7 +423,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharacterTemplate_14
+      name: Land_1
       rect:
         serializedVersion: 2
         x: 64
@@ -444,7 +444,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharacterTemplate_15
+      name: Land_2
       rect:
         serializedVersion: 2
         x: 128
@@ -1819,23 +1819,20 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      CharacterTemplate_12: 1652808335
       CharacterTemplate_22: -1663861683
       CharacterTemplate_56: -273027580
       CharacterTemplate_18: -1489904977
       CharacterTemplate_47: -1996553441
-      CharacterTemplate_14: -2050167834
-      Move_7: 1597593507
+      Jump_2: -815805038
+      Jump_1: 1453338320
       Move_8: -216903015
       CharacterTemplate_68: -1415040667
       CharacterTemplate_23: -1134077794
       CharacterTemplate_72: -2018000438
       CharacterTemplate_54: -414963054
-      CharacterTemplate_5: -735059870
-      CharacterTemplate_11: 1472897162
+      Jump_X_0: -73147462
       CharacterTemplate_17: -1164426445
       CharacterTemplate_19: 451339410
-      CharacterTemplate_7: -2052693364
       CharacterTemplate_43: 2091849110
       Idle_3: -1245435877
       CharacterTemplate_79: 579687240
@@ -1847,12 +1844,12 @@ TextureImporter:
       CharacterTemplate_45: -948037694
       Move_9: 424405708
       CharacterTemplate_16: -967590232
-      CharacterTemplate_10: 344782363
       CharacterTemplate_27: 1662147633
-      CharacterTemplate_26: 1080467929
-      CharacterTemplate_46: 1912701340
+      Jump_0: -2052693364
       CharacterTemplate_50: -2033109034
+      CharacterTemplate_26: 1080467929
       CharacterTemplate_53: -1185941501
+      CharacterTemplate_46: 1912701340
       Move_3: -1003525227
       CharacterTemplate_62: 1390336175
       CharacterTemplate_71: 624417812
@@ -1862,14 +1859,14 @@ TextureImporter:
       CharacterTemplate_51: 1571037570
       CharacterTemplate_49: -1554604551
       CharacterTemplate_44: -2024504055
-      CharacterTemplate_13: -78861063
       CharacterTemplate_77: -970960786
+      Jump_X_2: 1099372648
       Move_6: -354721746
       CharacterTemplate_25: -1756949546
       CharacterTemplate_70: -1015473373
       CharacterTemplate_48: -965232608
+      Fall_1: 1472897162
       CharacterTemplate_63: -1203488718
-      CharacterTemplate_9: -815805038
       CharacterTemplate_74: -1324842481
       CharacterTemplate_20: -303431939
       Move_4: -1162323004
@@ -1877,28 +1874,31 @@ TextureImporter:
       CharacterTemplate_67: -1051117682
       Idle_1: -1938207447
       Move_10: 1180102719
+      Land_0: -78861063
+      Land_2: -96918710
       Move_5: -1861436162
       CharacterTemplate_57: -1806248291
       CharacterTemplate_78: -2040412464
       CharacterTemplate_52: 2075123456
-      CharacterTemplate_6: 1099372648
       Idle_0: -1976742959
       Move_11: -119247060
       CharacterTemplate_60: -378886199
       Move_2: -383453137
-      CharacterTemplate_8: 1453338320
       CharacterTemplate_66: -1592433096
+      Fall_0: 344782363
       CharacterTemplate_55: -344478677
       CharacterTemplate_61: 293302815
       Move_1: 1773166257
+      Jump_X_1: -735059870
       CharacterTemplate_75: 1971284907
-      CharacterTemplate_15: -96918710
+      Move_7: 1597593507
       Idle_2: 1882917551
-      CharacterTemplate_4: -73147462
       CharacterTemplate_58: -746524741
+      Fall_2: 1652808335
       CharacterTemplate_64: 788539359
       CharacterTemplate_73: 257904782
       CharacterTemplate_59: -1546561150
+      Land_1: -2050167834
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

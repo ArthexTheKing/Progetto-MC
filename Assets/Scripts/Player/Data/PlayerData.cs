@@ -6,5 +6,17 @@ using UnityEngine;
 public class PlayerData : ScriptableObject
 {
     [Header("Move State")]
-    public float movementVelocity = 10f;
+    public float movementVelocity;
+
+    [Header("Jump State")]
+    public int amountOfJumps;
+    public float jumpVelocity;
+
+    [Header("In Air State")]
+    public float coyoteTime;
+    public float variableJumpHeightMultiplier;
+
+    [Header("Check Variables")]
+    public float groundCheckRadius;
+    public LayerMask whatIsGround;
 }
