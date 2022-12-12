@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     public PlayerInAirState InAirState { get; private set; }
     public PlayerLandState LandState { get; private set; }
     public PlayerWallSlideState WallSlideState { get; private set; }
+    public PlayerWallJumpState WallJumpState { get; private set; }
 
     #endregion
 
@@ -53,6 +54,7 @@ public class Player : MonoBehaviour
         InAirState = new PlayerInAirState(this, playerData, StateMachine, "inAir");
         LandState = new PlayerLandState(this, playerData, StateMachine, "land");
         WallSlideState = new PlayerWallSlideState(this, playerData, StateMachine, "wallSlide");
+        WallJumpState = new PlayerWallJumpState(this, playerData, StateMachine, "inAir");
     }
 
     private void Start()
@@ -80,12 +82,22 @@ public class Player : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(groundCheck.position, playerData.groundCheckRadius);
-        Gizmos.DrawRay(wallCheck.position, new Vector3(0.0f, playerData.wallCheckDistance, 0.0f));
+        Gizmos.DrawRay(wallCheck.position, new Vector3(playerData.wallCheckDistance, 0f, 0f));
+        Gizmos.DrawRay(wallCheck.position, new Vector3(-playerData.wallCheckDistance, 0f, 0f));
     }
 
     #endregion
 
     #region Set Functions
+
+    public void SetVelocityXY(float velocity, Vector2 angle, int direction)
+    {
+        angle.Normalize();
+        workspace.Set(angle.x * velocity * direction, angle.y * velocity);
+        RB.velocity = workspace;
+        CurrentVelocity = workspace;
+    }
+
     public void SetVelocityX(float velocity)
     {
         workspace.Set(velocity, CurrentVelocity.y);
@@ -99,6 +111,7 @@ public class Player : MonoBehaviour
         RB.velocity = workspace;
         CurrentVelocity = workspace;
     }
+
     #endregion
 
     #region Check Functions
@@ -106,6 +119,8 @@ public class Player : MonoBehaviour
     public bool CheckIfGrounded() => Physics2D.OverlapCircle(groundCheck.position, playerData.groundCheckRadius, playerData.whatIsGround);
 
     public bool CheckIfTouchingWall() => Physics2D.Raycast(wallCheck.position, Vector2.right * FacingDirection, playerData.wallCheckDistance, playerData.whatIsGround);
+
+    public bool CheckIfTouchingWallBack() => Physics2D.Raycast(wallCheck.position, Vector2.right * -FacingDirection, playerData.wallCheckDistance, playerData.whatIsGround);
 
     public void CheckIfShouldFlip(int xInput)
     {
