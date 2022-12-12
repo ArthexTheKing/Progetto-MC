@@ -465,7 +465,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharacterTemplate_16
+      name: Wall_Slide_0
       rect:
         serializedVersion: 2
         x: 0
@@ -486,7 +486,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharacterTemplate_17
+      name: Wall_Slide_1
       rect:
         serializedVersion: 2
         x: 64
@@ -507,7 +507,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharacterTemplate_18
+      name: Wall_Slide_2
       rect:
         serializedVersion: 2
         x: 128
@@ -528,7 +528,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharacterTemplate_19
+      name: Wall_Slide_3
       rect:
         serializedVersion: 2
         x: 192
@@ -549,7 +549,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharacterTemplate_20
+      name: Wall_Slide_4
       rect:
         serializedVersion: 2
         x: 256
@@ -1821,21 +1821,18 @@ TextureImporter:
     nameFileIdTable:
       CharacterTemplate_22: -1663861683
       CharacterTemplate_56: -273027580
-      CharacterTemplate_18: -1489904977
+      Jump_1: 1453338320
       CharacterTemplate_47: -1996553441
       Jump_2: -815805038
-      Jump_1: 1453338320
       Move_8: -216903015
       CharacterTemplate_68: -1415040667
       CharacterTemplate_23: -1134077794
       CharacterTemplate_72: -2018000438
       CharacterTemplate_54: -414963054
       Jump_X_0: -73147462
-      CharacterTemplate_17: -1164426445
-      CharacterTemplate_19: 451339410
+      CharacterTemplate_79: 579687240
       CharacterTemplate_43: 2091849110
       Idle_3: -1245435877
-      CharacterTemplate_79: 579687240
       CharacterTemplate_28: -1796554782
       CharacterTemplate_76: -1118079076
       CharacterTemplate_69: -1958304628
@@ -1843,7 +1840,7 @@ TextureImporter:
       CharacterTemplate_30: -975821217
       CharacterTemplate_45: -948037694
       Move_9: 424405708
-      CharacterTemplate_16: -967590232
+      Move_6: -354721746
       CharacterTemplate_27: 1662147633
       Jump_0: -2052693364
       CharacterTemplate_50: -2033109034
@@ -1861,27 +1858,29 @@ TextureImporter:
       CharacterTemplate_44: -2024504055
       CharacterTemplate_77: -970960786
       Jump_X_2: 1099372648
-      Move_6: -354721746
+      Land_0: -78861063
       CharacterTemplate_25: -1756949546
       CharacterTemplate_70: -1015473373
       CharacterTemplate_48: -965232608
       Fall_1: 1472897162
       CharacterTemplate_63: -1203488718
       CharacterTemplate_74: -1324842481
-      CharacterTemplate_20: -303431939
       Move_4: -1162323004
       CharacterTemplate_65: 2028090775
       CharacterTemplate_67: -1051117682
       Idle_1: -1938207447
       Move_10: 1180102719
-      Land_0: -78861063
       Land_2: -96918710
+      Wall_Slide_2: -1489904977
       Move_5: -1861436162
+      Wall_Slide_4: -303431939
       CharacterTemplate_57: -1806248291
       CharacterTemplate_78: -2040412464
       CharacterTemplate_52: 2075123456
       Idle_0: -1976742959
       Move_11: -119247060
+      Wall_Slide_0: -967590232
+      Wall_Slide_3: 451339410
       CharacterTemplate_60: -378886199
       Move_2: -383453137
       CharacterTemplate_66: -1592433096
@@ -1895,6 +1894,7 @@ TextureImporter:
       Idle_2: 1882917551
       CharacterTemplate_58: -746524741
       Fall_2: 1652808335
+      Wall_Slide_1: -1164426445
       CharacterTemplate_64: 788539359
       CharacterTemplate_73: 257904782
       CharacterTemplate_59: -1546561150

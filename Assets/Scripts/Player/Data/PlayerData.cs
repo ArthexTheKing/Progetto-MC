@@ -16,7 +16,11 @@ public class PlayerData : ScriptableObject
     public float coyoteTime;
     public float variableJumpHeightMultiplier;
 
+    [Header("Wall Slide State")]
+    public float wallSlideVelocity;
+
     [Header("Check Variables")]
     public float groundCheckRadius;
+    public float wallCheckDistance;
     public LayerMask whatIsGround;
 }
