@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +13,13 @@ public class GameManager : MonoBehaviour
     private float respawnTime;
     private float respawnTimeStart;
     private bool respawn;
+
+    private CinemachineVirtualCamera CVC;
+
+    private void Start()
+    {
+        CVC = GameObject.Find("Player Camera").GetComponent<CinemachineVirtualCamera>();
+    }
 
     public void Update()
     {
@@ -26,9 +34,11 @@ public class GameManager : MonoBehaviour
 
     public void CheckRespawn()
     {
-        if(Time.time >= respawnTimeStart + respawnTime)
+        if(Time.time >= respawnTimeStart + respawnTime && respawn)
         {
-            Instantiate(player, respawnPoint);
+            var playerTemp = Instantiate(player, respawnPoint);
+            CVC.m_Follow = playerTemp.transform;
+            respawn = false;
         }
     }
 
