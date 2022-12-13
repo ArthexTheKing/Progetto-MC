@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerWallSlideState : PlayerState
 {
     private int xInput;
+
     private bool isGrounded;
     private bool isTouchingWall;
     private bool jumpInput;
