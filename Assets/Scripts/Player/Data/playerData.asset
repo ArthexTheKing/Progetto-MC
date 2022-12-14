@@ -23,6 +23,9 @@ MonoBehaviour:
   wallSlideVelocity: 2
   startOffset: {x: 0.4, y: 0.9}
   stopOffset: {x: 0.4, y: 0.75}
+  crouchMovementVelocity: 5
+  crouchColliderHeight: 0.8
+  standColliderHeight: 1.6
   groundCheckRadius: 0.3
   wallCheckDistance: 0.5
   whatIsGround:

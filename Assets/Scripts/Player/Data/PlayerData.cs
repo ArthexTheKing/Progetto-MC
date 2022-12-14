@@ -28,6 +28,11 @@ public class PlayerData : ScriptableObject
     public Vector2 startOffset;
     public Vector2 stopOffset;
 
+    [Header("Crouch State")]
+    public float crouchMovementVelocity;
+    public float crouchColliderHeight;
+    public float standColliderHeight;
+
     [Header("Check Variables")]
     public float groundCheckRadius;
     public float wallCheckDistance;

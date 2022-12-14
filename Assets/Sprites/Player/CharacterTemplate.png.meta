@@ -1473,10 +1473,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharacterTemplate_64
+      name: CrouchIdle_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1
         y: 64
         width: 64
         height: 64
@@ -1494,7 +1494,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharacterTemplate_65
+      name: CrouchIdle_1
       rect:
         serializedVersion: 2
         x: 64
@@ -1515,7 +1515,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharacterTemplate_66
+      name: CrouchIdle_2
       rect:
         serializedVersion: 2
         x: 128
@@ -1536,7 +1536,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharacterTemplate_67
+      name: CrouchIdle_3
       rect:
         serializedVersion: 2
         x: 192
@@ -1557,7 +1557,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharacterTemplate_68
+      name: CrouchMove_0
       rect:
         serializedVersion: 2
         x: 0
@@ -1578,7 +1578,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharacterTemplate_69
+      name: CrouchMove_1
       rect:
         serializedVersion: 2
         x: 64
@@ -1599,7 +1599,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharacterTemplate_70
+      name: CrouchMove_2
       rect:
         serializedVersion: 2
         x: 128
@@ -1620,7 +1620,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharacterTemplate_71
+      name: CrouchMove_3
       rect:
         serializedVersion: 2
         x: 192
@@ -1641,7 +1641,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharacterTemplate_72
+      name: CrouchMove_4
       rect:
         serializedVersion: 2
         x: 256
@@ -1662,7 +1662,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharacterTemplate_73
+      name: CrouchMove_5
       rect:
         serializedVersion: 2
         x: 320
@@ -1683,7 +1683,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharacterTemplate_74
+      name: CrouchMove_6
       rect:
         serializedVersion: 2
         x: 384
@@ -1704,7 +1704,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharacterTemplate_75
+      name: CrouchMove_7
       rect:
         serializedVersion: 2
         x: 448
@@ -1725,7 +1725,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharacterTemplate_76
+      name: CrouchMove_8
       rect:
         serializedVersion: 2
         x: 512
@@ -1746,7 +1746,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharacterTemplate_77
+      name: CrouchMove_9
       rect:
         serializedVersion: 2
         x: 576
@@ -1767,7 +1767,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharacterTemplate_78
+      name: CrouchMove_10
       rect:
         serializedVersion: 2
         x: 640
@@ -1788,7 +1788,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharacterTemplate_79
+      name: CrouchMove_11
       rect:
         serializedVersion: 2
         x: 704
@@ -1819,28 +1819,28 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      CrouchIdle_0: 788539359
       CharacterTemplate_22: -1663861683
       CharacterTemplate_56: -273027580
       Jump_1: 1453338320
       CharacterTemplate_47: -1996553441
       Jump_2: -815805038
+      CrouchMove_0: -1415040667
+      CrouchIdle_2: -1592433096
       Move_8: -216903015
-      CharacterTemplate_68: -1415040667
       CharacterTemplate_23: -1134077794
-      CharacterTemplate_72: -2018000438
       CharacterTemplate_54: -414963054
       Jump_X_0: -73147462
-      CharacterTemplate_79: 579687240
       CharacterTemplate_43: 2091849110
       Idle_3: -1245435877
+      CrouchMove_1: -1958304628
       CharacterTemplate_28: -1796554782
-      CharacterTemplate_76: -1118079076
-      CharacterTemplate_69: -1958304628
       CharacterTemplate_24: 498995332
-      CharacterTemplate_30: -975821217
+      Land_0: -78861063
       CharacterTemplate_45: -948037694
-      Move_9: 424405708
+      CharacterTemplate_30: -975821217
       Move_6: -354721746
+      Move_9: 424405708
       CharacterTemplate_27: 1662147633
       Jump_0: -2052693364
       CharacterTemplate_50: -2033109034
@@ -1849,55 +1849,56 @@ TextureImporter:
       CharacterTemplate_46: 1912701340
       Move_3: -1003525227
       CharacterTemplate_62: 1390336175
-      CharacterTemplate_71: 624417812
+      Jump_X_2: 1099372648
       Move_0: -762178757
       CharacterTemplate_29: 1353108296
       CharacterTemplate_21: 1191893457
       CharacterTemplate_51: 1571037570
       CharacterTemplate_49: -1554604551
       CharacterTemplate_44: -2024504055
-      CharacterTemplate_77: -970960786
-      Jump_X_2: 1099372648
-      Land_0: -78861063
+      CrouchIdle_1: 2028090775
+      CrouchMove_4: -2018000438
+      CrouchMove_8: -1118079076
+      CrouchMove_3: 624417812
       CharacterTemplate_25: -1756949546
-      CharacterTemplate_70: -1015473373
-      CharacterTemplate_48: -965232608
       Fall_1: 1472897162
+      CharacterTemplate_48: -965232608
+      CrouchMove_6: -1324842481
       CharacterTemplate_63: -1203488718
-      CharacterTemplate_74: -1324842481
       Move_4: -1162323004
-      CharacterTemplate_65: 2028090775
-      CharacterTemplate_67: -1051117682
+      CrouchMove_10: -2040412464
       Idle_1: -1938207447
       Move_10: 1180102719
       Land_2: -96918710
       Wall_Slide_2: -1489904977
+      CrouchMove_11: 579687240
+      CrouchIdle_3: -1051117682
       Move_5: -1861436162
       Wall_Slide_4: -303431939
       CharacterTemplate_57: -1806248291
-      CharacterTemplate_78: -2040412464
       CharacterTemplate_52: 2075123456
       Idle_0: -1976742959
+      CrouchMove_2: -1015473373
       Move_11: -119247060
       Wall_Slide_0: -967590232
       Wall_Slide_3: 451339410
+      CrouchMove_5: 257904782
       CharacterTemplate_60: -378886199
       Move_2: -383453137
-      CharacterTemplate_66: -1592433096
+      CrouchMove_9: -970960786
       Fall_0: 344782363
+      CrouchMove_7: 1971284907
       CharacterTemplate_55: -344478677
       CharacterTemplate_61: 293302815
       Move_1: 1773166257
       Jump_X_1: -735059870
-      CharacterTemplate_75: 1971284907
+      Wall_Slide_1: -1164426445
       Move_7: 1597593507
       Idle_2: 1882917551
       CharacterTemplate_58: -746524741
       Fall_2: 1652808335
-      Wall_Slide_1: -1164426445
-      CharacterTemplate_64: 788539359
-      CharacterTemplate_73: 257904782
       CharacterTemplate_59: -1546561150
+      CharacterTemplate_0: -41469155
       Land_1: -2050167834
   spritePackingTag: 
   pSDRemoveMatte: 0

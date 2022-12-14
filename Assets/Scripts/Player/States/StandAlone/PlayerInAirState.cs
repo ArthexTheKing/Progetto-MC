@@ -1,9 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerInAirState : PlayerState
 {
+    #region Private Variables
+
     private int xInput;
 
     private bool isGrounded;
@@ -20,9 +20,17 @@ public class PlayerInAirState : PlayerState
 
     private float startWallJumpCoyoteTime;
 
+    #endregion
+
+    #region Constructors
+
     public PlayerInAirState(Player player, PlayerData playerData, PlayerStateMachine stateMachine, string animBoolName) : base(player, playerData, stateMachine, animBoolName)
     {
     }
+
+    #endregion
+
+    #region Overrides
 
     public override void DoChecks()
     {
@@ -45,16 +53,6 @@ public class PlayerInAirState : PlayerState
         {
             StartWallJumpCoyoteTime();
         }
-    }
-
-    public override void Exit()
-    {
-        base.Exit();
-
-        oldIsTouchingWall = false;
-        oldIsTouchingWallBack = false;
-        isTouchingWall = false;
-        isTouchingWallBack = false;
     }
 
     public override void LogicUpdate()
@@ -103,6 +101,36 @@ public class PlayerInAirState : PlayerState
         }
     }
 
+    public override void Exit()
+    {
+        base.Exit();
+
+        oldIsTouchingWall = false;
+        oldIsTouchingWallBack = false;
+        isTouchingWall = false;
+        isTouchingWallBack = false;
+    }
+
+    #endregion
+
+    #region Public Functions
+
+    public void StartCoyoteTime() => coyoteTime = true;
+
+    public void StartWallJumpCoyoteTime()
+    {
+        wallJumpCoyoteTime = true;
+        startWallJumpCoyoteTime = Time.time;
+    }
+
+    public void StopWallJumpCoyoteTime() => wallJumpCoyoteTime = false;
+
+    public void SetIsJumping() => isJumping = true;
+
+    #endregion
+
+    #region Private Functions
+
     private void CheckJumpMultiplier()
     {
         if (isJumping)
@@ -136,16 +164,5 @@ public class PlayerInAirState : PlayerState
         }
     }
 
-    public void StartCoyoteTime() => coyoteTime = true;
-
-    public void StartWallJumpCoyoteTime()
-    {
-        wallJumpCoyoteTime = true;
-        startWallJumpCoyoteTime = Time.time;
-    }
-
-    public void StopWallJumpCoyoteTime() => wallJumpCoyoteTime = false;
-
-    public void SetIsJumping() => isJumping = true;
-
+    #endregion
 }

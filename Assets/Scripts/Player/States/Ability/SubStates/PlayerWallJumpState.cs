@@ -1,15 +1,23 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 
 public class PlayerWallJumpState : PlayerAbilityState
 {
+    #region Private Variables
+
     private int wallJumpDirection;
+
+    #endregion
+
+    #region Constructors
 
     public PlayerWallJumpState(Player player, PlayerData playerData, PlayerStateMachine stateMachine, string animBoolName) : base(player, playerData, stateMachine, animBoolName)
     {
     }
+
+    #endregion
+
+    #region Overrides
 
     public override void Enter()
     {
@@ -28,11 +36,17 @@ public class PlayerWallJumpState : PlayerAbilityState
         player.Anim.SetFloat("yVelocity", player.CurrentVelocity.y);
         player.Anim.SetFloat("xVelocity", Mathf.Abs(player.CurrentVelocity.x));
 
-        if(Time.time >= startTime + playerData.wallJumpTime)
+        if (Time.time >= startTime + playerData.wallJumpTime)
         {
             isAbilityDone = true;
         }
     }
 
+    #endregion
+
+    #region Public Variables
+
     public void DetermineWallJumpDirection(bool isTouchingWall) => wallJumpDirection = isTouchingWall ? -player.FacingDirection : player.FacingDirection;
+
+    #endregion
 }

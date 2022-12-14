@@ -1,13 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerLandState : PlayerGroundedState
 {
+    #region Constructors
 
     public PlayerLandState(Player player, PlayerData playerData, PlayerStateMachine stateMachine, string animBoolName) : base(player, playerData, stateMachine, animBoolName)
     {
     }
+
+    #endregion
+
+    #region Overrides
 
     public override void LogicUpdate()
     {
@@ -15,7 +18,7 @@ public class PlayerLandState : PlayerGroundedState
 
         if(!isExitingState)
         {
-            if(xInput != 0)
+            if(xInput != 0 && !isTouchingWall)
             {
                 stateMachine.ChangeState(player.MoveState);
             }
@@ -25,4 +28,6 @@ public class PlayerLandState : PlayerGroundedState
             }
         }
     }
+
+    #endregion
 }

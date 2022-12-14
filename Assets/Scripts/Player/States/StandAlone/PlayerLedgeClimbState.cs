@@ -1,8 +1,9 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerLedgeClimbState : PlayerState
 {
+    #region Private Variables
+
     private Vector2 detectedPos;
     private Vector2 cornerPos;
     private Vector2 startPos;
@@ -14,24 +15,19 @@ public class PlayerLedgeClimbState : PlayerState
     private bool isHanging;
     private bool isClimbing;
     private bool jumpInput;
+    private bool isTouchingCeiling;
+
+    #endregion
+ 
+    #region Constructors
 
     public PlayerLedgeClimbState(Player player, PlayerData playerData, PlayerStateMachine stateMachine, string animBoolName) : base(player, playerData, stateMachine, animBoolName)
     {
     }
 
-    public override void AnimationFinishTrigger()
-    {
-        base.AnimationFinishTrigger();
+    #endregion
 
-        player.Anim.SetBool("climbLedge", false);
-    }
-
-    public override void AnimationTrigger()
-    {
-        base.AnimationTrigger();
-
-        isHanging = true;
-    }
+    #region Overrides
 
     public override void Enter()
     {
@@ -47,26 +43,20 @@ public class PlayerLedgeClimbState : PlayerState
         player.transform.position = startPos;
     }
 
-    public override void Exit()
-    {
-        base.Exit();
-
-        isHanging = false;
-
-        if(isClimbing)
-        {
-            player.transform.position = stopPos;
-            isClimbing = false;
-        }
-    }
-
     public override void LogicUpdate()
     {
         base.LogicUpdate();
 
-        if(isAnimationFinished)
+        if (isAnimationFinished)
         {
-            stateMachine.ChangeState(player.IdleState);
+            if (isTouchingCeiling)
+            {
+                stateMachine.ChangeState(player.CrouchIdleState);
+            }
+            else
+            {
+                stateMachine.ChangeState(player.IdleState);
+            }
         }
         else
         {
@@ -79,6 +69,7 @@ public class PlayerLedgeClimbState : PlayerState
 
             if (xInput == player.FacingDirection && isHanging && !isClimbing)
             {
+                CheckForSpace();
                 isClimbing = true;
                 player.Anim.SetBool("climbLedge", true);
             }
@@ -94,6 +85,52 @@ public class PlayerLedgeClimbState : PlayerState
         }
     }
 
+    public override void Exit()
+    {
+        base.Exit();
+
+        isHanging = false;
+
+        if (isClimbing)
+        {
+            player.transform.position = stopPos;
+            isClimbing = false;
+        }
+    }
+
+    #endregion
+
+    #region Animation Handlers
+
+    public override void AnimationTrigger()
+    {
+        base.AnimationTrigger();
+
+        isHanging = true;
+    }
+
+    public override void AnimationFinishTrigger()
+    {
+        base.AnimationFinishTrigger();
+
+        player.Anim.SetBool("climbLedge", false);
+    }
+
+    #endregion
+
+    #region Public Functions
+    
     public void SetDetectedPos(Vector2 detectedPos) => this.detectedPos = detectedPos;
 
+    #endregion
+
+    #region Private Functions
+
+    private void CheckForSpace()
+    {
+        isTouchingCeiling = Physics2D.Raycast(cornerPos + (Vector2.up * 0.015f) + (0.015f * player.FacingDirection * Vector2.right), Vector2.up, playerData.standColliderHeight, playerData.whatIsGround);
+        player.Anim.SetBool("isTouchingCeiling", isTouchingCeiling);
+    }
+
+    #endregion
 }

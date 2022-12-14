@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -15,6 +13,8 @@ public class Player : MonoBehaviour
     public PlayerWallSlideState WallSlideState { get; private set; }
     public PlayerWallJumpState WallJumpState { get; private set; }
     public PlayerLedgeClimbState LedgeClimbState { get; private set; }
+    public PlayerCrouchIdleState CrouchIdleState { get; private set; }
+    public PlayerCrouchMoveState CrouchMoveState { get; private set; }
 
     #endregion
 
@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
 
     public Animator Anim { get; private set; }
     public Rigidbody2D RB { get; private set; }
+    public BoxCollider2D MovementCollider { get; private set; }
     public PlayerInputHandler InputHandler { get; private set; }
 
     [SerializeField]
@@ -39,6 +40,9 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private Transform ledgeCheck;
+
+    [SerializeField]
+    private Transform ceilingCheck;
 
     #endregion
 
@@ -62,6 +66,8 @@ public class Player : MonoBehaviour
         WallSlideState = new PlayerWallSlideState(this, playerData, StateMachine, "wallSlide");
         WallJumpState = new PlayerWallJumpState(this, playerData, StateMachine, "inAir");
         LedgeClimbState = new PlayerLedgeClimbState(this, playerData, StateMachine, "ledgeClimbState");
+        CrouchIdleState = new PlayerCrouchIdleState(this, playerData, StateMachine, "crouchIdle");
+        CrouchMoveState = new PlayerCrouchMoveState(this, playerData, StateMachine, "crouchMove");
     }
 
     private void Start()
@@ -69,6 +75,7 @@ public class Player : MonoBehaviour
         Anim = GetComponent<Animator>();
         RB = GetComponent<Rigidbody2D>(); 
         InputHandler = GetComponent<PlayerInputHandler>();
+        MovementCollider = GetComponent<BoxCollider2D>();
 
         FacingDirection = 1;
 
@@ -89,6 +96,7 @@ public class Player : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(groundCheck.position, playerData.groundCheckRadius);
+        Gizmos.DrawWireSphere(ceilingCheck.position, playerData.groundCheckRadius);
         Gizmos.DrawRay(wallCheck.position, new Vector3(playerData.wallCheckDistance, 0f, 0f));
         Gizmos.DrawRay(wallCheck.position, new Vector3(-playerData.wallCheckDistance, 0f, 0f));
         Gizmos.DrawRay(ledgeCheck.position, new Vector3(playerData.wallCheckDistance, 0f, 0f));
@@ -130,6 +138,8 @@ public class Player : MonoBehaviour
 
     #region Check Functions
 
+    public bool CheckForCeiling() => Physics2D.OverlapCircle(ceilingCheck.position, playerData.groundCheckRadius, playerData.whatIsGround);
+
     public bool CheckIfGrounded() => Physics2D.OverlapCircle(groundCheck.position, playerData.groundCheckRadius, playerData.whatIsGround);
 
     public bool CheckIfTouchingWall() => Physics2D.Raycast(wallCheck.position, Vector2.right * FacingDirection, playerData.wallCheckDistance, playerData.whatIsGround);
@@ -150,12 +160,23 @@ public class Player : MonoBehaviour
 
     #region Other Functions
 
+    public void SetColliderHeight(float height)
+    {
+        Vector2 center = MovementCollider.offset;
+        workspace.Set(MovementCollider.size.x, height);
+
+        center.y += (height - MovementCollider.size.y) / 2;
+
+        MovementCollider.size = workspace;
+        MovementCollider.offset = center;
+    }
+
     public Vector2 DetermineCornerPosition()
     {
         RaycastHit2D xHit = Physics2D.Raycast(wallCheck.position, Vector2.right * FacingDirection, playerData.wallCheckDistance, playerData.whatIsGround);
         float xDist = xHit.distance;
-        workspace.Set(xDist * FacingDirection, 0f);
-        RaycastHit2D yHit = Physics2D.Raycast(ledgeCheck.position + (Vector3)(workspace), Vector2.down, ledgeCheck.position.y - wallCheck.position.y, playerData.whatIsGround);
+        workspace.Set((xDist + 0.015f) * FacingDirection, 0f);
+        RaycastHit2D yHit = Physics2D.Raycast(ledgeCheck.position + (Vector3)(workspace), Vector2.down, ledgeCheck.position.y - wallCheck.position.y + 0.015f, playerData.whatIsGround);
         float yDist = yHit.distance;
 
         workspace.Set(wallCheck.position.x + (xDist * FacingDirection), ledgeCheck.position.y - yDist);

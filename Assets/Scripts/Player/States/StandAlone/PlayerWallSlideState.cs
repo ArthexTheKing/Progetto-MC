@@ -1,18 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerWallSlideState : PlayerState
 {
+    #region Private Variables
+
     private int xInput;
 
     private bool isGrounded;
     private bool isTouchingWall;
     private bool jumpInput;
 
+    #endregion
+
+    #region Constructors
+
     public PlayerWallSlideState(Player player, PlayerData playerData, PlayerStateMachine stateMachine, string animBoolName) : base(player, playerData, stateMachine, animBoolName)
     {
     }
+
+    #endregion
+
+    #region Overrides
 
     public override void DoChecks()
     {
@@ -50,4 +58,5 @@ public class PlayerWallSlideState : PlayerState
             }
         }
     }
+    #endregion
 }

@@ -171,7 +171,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ledge_Climb_0
+      name: LedgeClimb_0
       rect:
         serializedVersion: 2
         x: 256
@@ -192,7 +192,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ledge_Climb_1
+      name: LedgeClimb_1
       rect:
         serializedVersion: 2
         x: 384
@@ -213,7 +213,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ledge_Climb_2
+      name: LedgeClimb_2
       rect:
         serializedVersion: 2
         x: 512
@@ -244,11 +244,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Ledge_Climb_1: 42217287
+      LedgeClimb_1: 42217287
       Ledge_Grab_0: -1977636050
-      Ledge_Climb_2: -295092584
+      LedgeClimb_2: -295092584
+      LedgeClimb_0: -364614305
       Ledge_Grab_1: -1000399344
-      Ledge_Climb_0: -364614305
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
