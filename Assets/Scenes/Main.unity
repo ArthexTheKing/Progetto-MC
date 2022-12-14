@@ -35988,7 +35988,7 @@ GameObject:
   m_Component:
   - component: {fileID: 529785213}
   m_Layer: 7
-  m_Name: GroundCheck
+  m_Name: LedgeCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36408,31 +36408,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1928183575}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d1af8c93d25df04494ded06e83b0b31, type: 3}
+  m_Script: {fileID: 11500000, guid: 071397172d1fb154e9903a4558094a65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundCheckDistance: 0.5
-  wallCheckDistance: 0.1
-  movementSpeed: 3
-  maxHealth: 30
-  knockbackDuration: 0.1
-  lastTouchDamageTime: 0
-  touchDamageCooldown: 0.2
-  touchDamage: 10
-  touchDamageWidth: 1.5
-  touchDamageHeight: 0.9
-  groundCheck: {fileID: 529785213}
+  entityData: {fileID: 11400000, guid: 78380336f68f1e14485309b285717545, type: 2}
   wallCheck: {fileID: 148964474}
-  touchDamageCheck: {fileID: 1147001258}
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 64
-  whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 512
-  knockbackSpeed: {x: 10, y: 5}
-  touchDamageBotLeft: {x: 0, y: 0}
-  touchDamageTopRight: {x: 0, y: 0}
+  ledgeCheck: {fileID: 529785213}
+  idleStateData: {fileID: 11400000, guid: c3b5bf2cb1c0d984ca17ec00ea4ba5fe, type: 2}
+  moveStateData: {fileID: 11400000, guid: c296978a944f14a4691462ee9d09cfc5, type: 2}
 --- !u!1 &2058578526
 GameObject:
   m_ObjectHideFlags: 0
