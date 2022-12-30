@@ -39,6 +39,11 @@ public class BasicEnemyController : MonoBehaviour
     knockbackSpeed,
     touchDamageBotLeft,
     touchDamageTopRight;
+    [SerializeField]
+    private GameObject
+        hitParticle,
+        deathChunkParticle,
+        deathBloodParticle;
 
     private float 
         currentHealth,
@@ -66,6 +71,7 @@ public class BasicEnemyController : MonoBehaviour
         aliveRb = alive.GetComponent<Rigidbody2D>();
         aliveAnim = alive.GetComponent<Animator>();
 
+        currentHealth = maxHealth;
         facingDirection = 1;
     }
 
@@ -142,7 +148,9 @@ public class BasicEnemyController : MonoBehaviour
 
     private void EnterDeadState()
     {
-
+        Instantiate(deathChunkParticle, alive.transform.position, deathChunkParticle.transform.rotation);
+        Instantiate(deathBloodParticle, alive.transform.position, deathBloodParticle.transform.rotation);
+        Destroy(gameObject);
     }
 
     private void UpdateDeadState()
@@ -160,6 +168,8 @@ public class BasicEnemyController : MonoBehaviour
     private void Damage(float[] attackDetails)
     {
         currentHealth -= attackDetails[0];
+
+        Instantiate(hitParticle, alive.transform.position, Quaternion.Euler(0.0f, 0.0f, Random.Range(0.0f, 360f)));
 
         if(attackDetails[1] > alive.transform.position.x)
         {

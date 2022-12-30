@@ -14,6 +14,7 @@ public class Entity : MonoBehaviour
    public Animator anim { get; private set; }
    public GameObject aliveGO { get; private set; }
    public AnimationToStatemachine atsm { get; private set; }
+   public int lastDamageDirection { get; private set; }
 
    [SerializeField]
    private Transform wallCheck;
@@ -21,17 +22,23 @@ public class Entity : MonoBehaviour
    private Transform ledgeCheck;
    [SerializeField]
    private Transform playerCheck;
+   [SerializeField]
+   private Transform groundCheck;
 
    private float currentHealt;
-
-   private int lastDamageDirection;
+   private float currentStunResistance;
+   private float lastDamageTime;
 
    private Vector2 velocityWorkspace;
+
+   protected bool isStunned;
+   protected bool isDead;
 
    public virtual void Start()
    {
       facingDirection = 1;
       currentHealt = entityData.maxHealt;
+      currentStunResistance = entityData.stunResistance;
 
         aliveGO = transform.Find("Alive").gameObject;
         rb = aliveGO.GetComponent<Rigidbody2D>();
@@ -44,6 +51,11 @@ public class Entity : MonoBehaviour
    public virtual void Update()
    {
       stateMachine.currentState.LogicUpdate();
+
+      if(Time.time >= lastDamageTime + entityData.stunRecoveryTime)
+      {
+         ResetStunResistance();
+      }
    }
 
    public virtual void FixedUpdate()
@@ -61,6 +73,7 @@ public class Entity : MonoBehaviour
    {
       angle.Normalize();
       velocityWorkspace.Set(angle.x * velocity * direction, angle.y * velocity);
+      rb.velocity = velocityWorkspace;
    }
 
    public virtual bool CheckWall()
@@ -76,6 +89,11 @@ public class Entity : MonoBehaviour
    public virtual bool CheckPlayerInMinAgroRange()
    {
       return Physics2D.Raycast(playerCheck.position, aliveGO.transform.right, entityData.minAgroDistance, entityData.whatIsPlayer);
+   }
+
+   public virtual bool CheckGround()
+   {
+      return Physics2D.OverlapCircle(groundCheck.position, entityData.groundCheckRadius, entityData.whatIsGround);
    }
 
    public virtual bool CheckPlayerInMaxAgroRange()
@@ -94,11 +112,22 @@ public class Entity : MonoBehaviour
       rb.velocity = velocityWorkspace;
    }
 
+   public virtual void ResetStunResistance()
+   {
+      isStunned = false;
+      currentStunResistance = entityData.stunResistance;
+   }
+
    public virtual void Damage(AttackDetails attackDetails)
    {
+      lastDamageTime = Time.time;
+
       currentHealt -= attackDetails.damageAmount;
+      currentStunResistance -= attackDetails.stunDamageAmount;
 
       DamageHop(entityData.damageHopSpeed);
+
+      Instantiate(entityData.hitParticle, aliveGO.transform.position, Quaternion.Euler(0f, 0f, Random.Range(0f, 360f)));
 
       if(attackDetails.position.x > aliveGO.transform.position.x)
       {
@@ -107,6 +136,16 @@ public class Entity : MonoBehaviour
       else
       {
          lastDamageDirection = 1;
+      }
+
+      if(currentStunResistance <= 0)
+      {
+         isStunned = true;
+      }
+
+      if(currentHealt <= 0)
+      {
+         isDead = true;
       }
    }
 
