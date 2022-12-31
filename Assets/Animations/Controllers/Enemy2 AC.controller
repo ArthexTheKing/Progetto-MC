@@ -224,7 +224,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: rangedAttack
+    m_ConditionEvent: rangedAttackState
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 7285887218373381673}
@@ -326,7 +326,7 @@ AnimatorController:
   m_Name: Enemy2 AC
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: rangedAttack
+  - m_Name: rangedAttackState
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -634,7 +634,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: rangedAttack
+    m_ConditionEvent: rangedAttackState
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -8216532861819207879}
