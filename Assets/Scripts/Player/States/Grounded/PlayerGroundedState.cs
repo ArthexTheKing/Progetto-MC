@@ -57,7 +57,11 @@ public class PlayerGroundedState : PlayerState
 
         if (!isTouchingCeiling)
         {
-            if (jumpInput && player.JumpState.CanJump())
+            if (player.InputHandler.AttackInput)
+            {
+                stateMachine.ChangeState(player.AttackState);
+            }
+            else if (jumpInput && player.JumpState.CanJump())
             {
                 stateMachine.ChangeState(player.JumpState);
             }
@@ -68,5 +72,6 @@ public class PlayerGroundedState : PlayerState
             }
         }
     }
+
     #endregion
 }

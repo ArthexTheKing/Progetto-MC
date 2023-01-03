@@ -570,7 +570,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharacterTemplate_21
+      name: Attack1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -591,7 +591,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharacterTemplate_22
+      name: Attack1_1
       rect:
         serializedVersion: 2
         x: 64
@@ -612,7 +612,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharacterTemplate_23
+      name: Attack1_2
       rect:
         serializedVersion: 2
         x: 128
@@ -633,7 +633,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharacterTemplate_24
+      name: Attack1_3
       rect:
         serializedVersion: 2
         x: 192
@@ -654,7 +654,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharacterTemplate_25
+      name: Attack1_4
       rect:
         serializedVersion: 2
         x: 256
@@ -675,7 +675,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharacterTemplate_26
+      name: Attack2_0
       rect:
         serializedVersion: 2
         x: 0
@@ -696,7 +696,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharacterTemplate_27
+      name: Attack2_1
       rect:
         serializedVersion: 2
         x: 64
@@ -717,7 +717,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharacterTemplate_28
+      name: Attack2_2
       rect:
         serializedVersion: 2
         x: 128
@@ -738,7 +738,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharacterTemplate_29
+      name: Attack2_3
       rect:
         serializedVersion: 2
         x: 192
@@ -759,7 +759,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharacterTemplate_30
+      name: Attack2_4
       rect:
         serializedVersion: 2
         x: 256
@@ -1808,6 +1808,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Empty
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 768
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c86af850b2cfe64cb04e94285c857b1
+      internalID: 1340132036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -1819,8 +1840,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      CrouchIdle_0: 788539359
-      CharacterTemplate_22: -1663861683
+      CharacterTemplate_59: -1546561150
       CharacterTemplate_56: -273027580
       Jump_1: 1453338320
       CharacterTemplate_47: -1996553441
@@ -1828,45 +1848,41 @@ TextureImporter:
       CrouchMove_0: -1415040667
       CrouchIdle_2: -1592433096
       Move_8: -216903015
-      CharacterTemplate_23: -1134077794
       CharacterTemplate_54: -414963054
       Jump_X_0: -73147462
       CharacterTemplate_43: 2091849110
       Idle_3: -1245435877
       CrouchMove_1: -1958304628
-      CharacterTemplate_28: -1796554782
-      CharacterTemplate_24: 498995332
+      Attack1_0: 1191893457
       Land_0: -78861063
-      CharacterTemplate_45: -948037694
-      CharacterTemplate_30: -975821217
-      Move_6: -354721746
+      CrouchMove_4: -2018000438
       Move_9: 424405708
-      CharacterTemplate_27: 1662147633
+      CharacterTemplate_45: -948037694
+      CrouchMove_10: -2040412464
+      Attack1_3: 498995332
+      CrouchMove_3: 624417812
       Jump_0: -2052693364
-      CharacterTemplate_50: -2033109034
-      CharacterTemplate_26: 1080467929
-      CharacterTemplate_53: -1185941501
       CharacterTemplate_46: 1912701340
-      Move_3: -1003525227
-      CharacterTemplate_62: 1390336175
+      CharacterTemplate_53: -1185941501
+      Move_6: -354721746
+      CrouchIdle_1: 2028090775
+      CharacterTemplate_50: -2033109034
+      Attack1_4: -1756949546
       Jump_X_2: 1099372648
       Move_0: -762178757
-      CharacterTemplate_29: 1353108296
-      CharacterTemplate_21: 1191893457
+      Move_3: -1003525227
+      Attack1_1: -1663861683
       CharacterTemplate_51: 1571037570
       CharacterTemplate_49: -1554604551
       CharacterTemplate_44: -2024504055
-      CrouchIdle_1: 2028090775
-      CrouchMove_4: -2018000438
+      CharacterTemplate_62: 1390336175
       CrouchMove_8: -1118079076
-      CrouchMove_3: 624417812
-      CharacterTemplate_25: -1756949546
       Fall_1: 1472897162
       CharacterTemplate_48: -965232608
       CrouchMove_6: -1324842481
       CharacterTemplate_63: -1203488718
+      Empty: -41469155
       Move_4: -1162323004
-      CrouchMove_10: -2040412464
       Idle_1: -1938207447
       Move_10: 1180102719
       Land_2: -96918710
@@ -1883,22 +1899,27 @@ TextureImporter:
       Wall_Slide_0: -967590232
       Wall_Slide_3: 451339410
       CrouchMove_5: 257904782
+      Attack2_4: -975821217
+      Fall_2: 1652808335
       CharacterTemplate_60: -378886199
       Move_2: -383453137
       CrouchMove_9: -970960786
-      Fall_0: 344782363
+      Attack2_2: -1796554782
+      Attack1_2: -1134077794
       CrouchMove_7: 1971284907
       CharacterTemplate_55: -344478677
       CharacterTemplate_61: 293302815
-      Move_1: 1773166257
-      Jump_X_1: -735059870
+      Fall_0: 344782363
       Wall_Slide_1: -1164426445
-      Move_7: 1597593507
       Idle_2: 1882917551
+      Move_7: 1597593507
       CharacterTemplate_58: -746524741
-      Fall_2: 1652808335
-      CharacterTemplate_59: -1546561150
-      CharacterTemplate_0: -41469155
+      Move_1: 1773166257
+      Attack2_1: 1662147633
+      Attack2_3: 1353108296
+      Attack2_0: 1080467929
+      Jump_X_1: -735059870
+      CrouchIdle_0: 788539359
       Land_1: -2050167834
   spritePackingTag: 
   pSDRemoveMatte: 0

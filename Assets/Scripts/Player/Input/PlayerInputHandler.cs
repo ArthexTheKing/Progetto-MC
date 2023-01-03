@@ -1,30 +1,43 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerInputHandler : MonoBehaviour
 {
+    #region Public Variables
+
     public Vector2 RawMovementInput { get; private set; }
 
     public int NormInputX { get; private set; }
     public int NormInputY { get; private set; }
     public bool JumpInput { get; private set; }
     public bool JumpInputStop { get; private set; }
+    public bool AttackInput { get; private set; }
+
+    #endregion
+
+    #region Private Variables
 
     [SerializeField]
-    private float inputHoldTime = 0.2f;
+    private float inputHoldTime;
     private float jumpInputStartTime;
 
-    private void Update()
-    {
-        CheckJumpInputHoldTime();
-    }
+    #endregion
+
+    #region Unity Callback Functions
+
+    private void Update() => CheckJumpInputHoldTime();
+
+    #endregion
+
+    #region Input Action context
 
     public void OnMoveInput(InputAction.CallbackContext context)
     {
         RawMovementInput = context.ReadValue<Vector2>();
 
-        NormInputX = (int)(RawMovementInput * Vector2.right).normalized.x;
-        NormInputY = (int)(RawMovementInput * Vector2.up).normalized.y;
+        NormInputX = Mathf.RoundToInt(RawMovementInput.x);
+        NormInputY = Mathf.RoundToInt(RawMovementInput.y);
     }
 
     public void OnJumpInput(InputAction.CallbackContext context)
@@ -42,6 +55,23 @@ public class PlayerInputHandler : MonoBehaviour
         }
     }
 
+    public void OnAttackInput(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            AttackInput = true;
+        }
+
+        if (context.canceled)
+        {
+            AttackInput = false;
+        }
+    }
+
+    #endregion
+
+    #region Other Functions
+
     public void UseJumpInput() => JumpInput = false;
 
     private void CheckJumpInputHoldTime()
@@ -52,4 +82,5 @@ public class PlayerInputHandler : MonoBehaviour
         }
     }
 
+    #endregion
 }

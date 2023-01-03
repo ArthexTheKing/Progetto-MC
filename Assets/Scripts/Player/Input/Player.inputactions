@@ -22,6 +22,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Attack",
+                    "type": "Button",
+                    "id": "b2756bdc-2237-4aea-b543-0233ca40c334",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -88,6 +97,17 @@
                     "processors": "",
                     "groups": "Tastiera-Mouse",
                     "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a0a377f9-0867-4f6a-acf1-6685be183765",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Tastiera-Mouse",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

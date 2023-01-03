@@ -31,7 +31,6 @@ public class PlayerInAirState : PlayerState
     #endregion
 
     #region Overrides
-
     public override void DoChecks()
     {
         base.DoChecks();
@@ -68,7 +67,11 @@ public class PlayerInAirState : PlayerState
 
         CheckJumpMultiplier();
 
-        if(isGrounded && player.CurrentVelocity.y < 0.01f)
+        if (player.InputHandler.AttackInput)
+        {
+            stateMachine.ChangeState(player.AttackState);
+        }
+        else if(isGrounded && player.CurrentVelocity.y < 0.01f)
         {
             stateMachine.ChangeState(player.LandState);
         }
