@@ -4,7 +4,7 @@ public class PlayerCrouchMoveState : PlayerGroundedState
 {
     #region Constructors
 
-    public PlayerCrouchMoveState(Player player, PlayerData playerData, PlayerStateMachine stateMachine, string animBoolName) : base(player, playerData, stateMachine, animBoolName)
+    public PlayerCrouchMoveState(Player player, SO_PlayerData playerData, PlayerStateMachine stateMachine, string animBoolName) : base(player, playerData, stateMachine, animBoolName)
     {
     }
 
@@ -25,7 +25,7 @@ public class PlayerCrouchMoveState : PlayerGroundedState
 
         if (!isExitingState)
         {
-            player.SetVelocityX(playerData.crouchMovementVelocity * xInput);
+            core.Movement.SetVelocityX(playerData.crouchMovementVelocity * xInput);
 
             if (xInput == 0 || isTouchingWall)
             {

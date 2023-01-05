@@ -14,7 +14,7 @@ public class PlayerWallSlideState : PlayerState
 
     #region Constructors
 
-    public PlayerWallSlideState(Player player, PlayerData playerData, PlayerStateMachine stateMachine, string animBoolName) : base(player, playerData, stateMachine, animBoolName)
+    public PlayerWallSlideState(Player player, SO_PlayerData playerData, PlayerStateMachine stateMachine, string animBoolName) : base(player, playerData, stateMachine, animBoolName)
     {
     }
 
@@ -26,8 +26,8 @@ public class PlayerWallSlideState : PlayerState
     {
         base.DoChecks();
 
-        isGrounded = player.CheckIfGrounded();
-        isTouchingWall = player.CheckIfTouchingWall();
+        isGrounded = core.CollisionSenses.Grounded;
+        isTouchingWall = core.CollisionSenses.WallFront;
     }
 
     public override void LogicUpdate()
@@ -48,13 +48,13 @@ public class PlayerWallSlideState : PlayerState
             {
                 stateMachine.ChangeState(player.IdleState);
             }
-            else if (!isTouchingWall || xInput != player.FacingDirection)
+            else if (!isTouchingWall || xInput != core.Movement.FacingDirection)
             {
                 stateMachine.ChangeState(player.InAirState);
             }
             else
             {
-                player.SetVelocityY(-playerData.wallSlideVelocity);
+                core.Movement.SetVelocityY(-playerData.wallSlideVelocity);
             }
         }
     }

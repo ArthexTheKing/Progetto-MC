@@ -2,8 +2,10 @@ using UnityEngine;
 
 public class PlayerState
 {
+    protected Core core;
+
     protected Player player;
-    protected PlayerData playerData;
+    protected SO_PlayerData playerData;
     protected PlayerStateMachine stateMachine;
 
     protected bool isAnimationFinished;
@@ -12,12 +14,13 @@ public class PlayerState
 
     private readonly string animBoolName;
 
-    public PlayerState(Player player, PlayerData playerData, PlayerStateMachine stateMachine, string animBoolName)
+    public PlayerState(Player player, SO_PlayerData playerData, PlayerStateMachine stateMachine, string animBoolName)
     {
         this.player = player;
         this.playerData = playerData;
         this.stateMachine = stateMachine;
         this.animBoolName = animBoolName;
+        core = player.Core;
     }
 
     public virtual void Enter()

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a949adebb251e8b4cbb97be2d7bc324e, type: 3}
-  m_Name: playerData
+  m_Name: Player
   m_EditorClassIdentifier: 
   movementVelocity: 10
   amountOfJumps: 1
@@ -26,8 +26,3 @@ MonoBehaviour:
   crouchMovementVelocity: 5
   crouchColliderHeight: 0.8
   standColliderHeight: 1.6
-  groundCheckRadius: 0.3
-  wallCheckDistance: 0.5
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 64
