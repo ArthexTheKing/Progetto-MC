@@ -1,14 +1,16 @@
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
-{
-    #region Private Variables
+{   
+    [SerializeField] private SO_WeaponData weaponData;
+
     private Animator weaponAnimator;
     private PlayerAttackState attackState;
 
-    #endregion
+    private int attackCounter;
 
     #region Unity Callback Functions
+
     private void Start()
     {
         weaponAnimator = GetComponent<Animator>();
@@ -18,30 +20,46 @@ public class Weapon : MonoBehaviour
 
     #endregion
 
-    #region Funtions
-    public void InitializeWeapon(PlayerAttackState attackState) => this.attackState = attackState;
+    #region Animation Trigger
+
+    public void AnimationFinishTrigger() => attackState.AnimationFinishTrigger();
+
+    public void AnimationStartMovementTrigger() => attackState.SetPlayerVelocity(weaponData.movementSpeed[attackCounter]);
+
+    public void AnimationStopMovementTrigger() => attackState.SetPlayerVelocity(0f);
+
+    public void AnimationTurnOffFlipTrigger() => attackState.SetFlipCheck(false);
+
+    public void AnimationTurnOnFlipTrigger() => attackState.SetFlipCheck(true);
+
+    #endregion
 
     public void EnterWeapon()
     {
         gameObject.SetActive(true);
 
+        if(attackCounter >= weaponData.movementSpeed.Length)
+        {
+            attackCounter = 0;
+        }
+
         weaponAnimator.SetBool("attack", true);
+
+        weaponAnimator.SetInteger("attackCounter", attackCounter);
     }
 
     public void ExitWeapon()
     {
         weaponAnimator.SetBool("attack", false);
 
+        attackCounter++;
+
         gameObject.SetActive(false);
     }
 
-    #endregion
-
-    #region Animation Trigger
-    public void AnimationFinishTrigger()
+    public void InitializeWeapon(PlayerAttackState attackState)
     {
-        attackState.AnimationFinishTrigger();
+        this.attackState = attackState;
     }
 
-    #endregion
 }
