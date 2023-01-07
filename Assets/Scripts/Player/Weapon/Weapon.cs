@@ -43,7 +43,7 @@ public class Weapon : MonoBehaviour
 
     public void AnimationFinishTrigger() => attackState.AnimationFinishTrigger();
 
-    public void AnimationStartMovementTrigger() => attackState.SetPlayerVelocity(weaponData.movementSpeed[attackCounter]);
+    public void AnimationStartMovementTrigger() => attackState.SetPlayerVelocity(weaponData.MovementSpeed[attackCounter]);
 
     public void AnimationStopMovementTrigger() => attackState.SetPlayerVelocity(0f);
 
@@ -64,7 +64,7 @@ public class Weapon : MonoBehaviour
     {
         gameObject.SetActive(true);
 
-        if(attackCounter >= weaponData.movementSpeed.Length)
+        if(attackCounter >= weaponData.AmountOfAttacks)
         {
             attackCounter = 0;
         }
@@ -85,9 +85,11 @@ public class Weapon : MonoBehaviour
 
     private void CheckMeleeAttack()
     {
+        WeaponAttackDetails attackDetails = weaponData.AttackDetails[attackCounter];
+
         foreach (IDamageble item in detectedDamagebes)
         {
-            item.Damage(10f);
+            item.Damage(attackDetails.damageAmount);
         }
     }
 
