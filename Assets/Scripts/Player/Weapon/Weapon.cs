@@ -32,7 +32,17 @@ public class Weapon : MonoBehaviour
 
     public void AnimationTurnOnFlipTrigger() => attackState.SetFlipCheck(true);
 
+    public void AnimationActionTrigger()
+    {
+
+    }
+
     #endregion
+
+    public void InitializeWeapon(PlayerAttackState attackState)
+    {
+        this.attackState = attackState;
+    }
 
     public void EnterWeapon()
     {
@@ -55,11 +65,6 @@ public class Weapon : MonoBehaviour
         attackCounter++;
 
         gameObject.SetActive(false);
-    }
-
-    public void InitializeWeapon(PlayerAttackState attackState)
-    {
-        this.attackState = attackState;
     }
 
 }
