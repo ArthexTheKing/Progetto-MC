@@ -51,10 +51,7 @@ public class Weapon : MonoBehaviour
 
     public void AnimationTurnOnFlipTrigger() => attackState.SetFlipCheck(true);
 
-    public void AnimationActionTrigger()
-    {
-
-    }
+    public void AnimationActionTrigger() => CheckMeleeAttack();
 
     #endregion
 
@@ -86,4 +83,11 @@ public class Weapon : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    private void CheckMeleeAttack()
+    {
+        foreach (IDamageble item in detectedDamagebes)
+        {
+            item.Damage(10f);
+        }
+    }
 }
