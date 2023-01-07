@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
@@ -6,6 +7,8 @@ public class Weapon : MonoBehaviour
 
     private Animator weaponAnimator;
     private PlayerAttackState attackState;
+
+    private readonly List<IDamageble> detectedDamagebes = new();
 
     private int attackCounter;
 
@@ -16,6 +19,22 @@ public class Weapon : MonoBehaviour
         weaponAnimator = GetComponent<Animator>();
 
         gameObject.SetActive(false);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (TryGetComponent<IDamageble>(out var damageble))
+        {
+            detectedDamagebes.Add(damageble);
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (TryGetComponent<IDamageble>(out var damageble))
+        {
+            detectedDamagebes.Remove(damageble);
+        }
     }
 
     #endregion

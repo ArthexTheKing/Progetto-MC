@@ -36768,7 +36768,7 @@ GameObject:
   - component: {fileID: 1410081156}
   - component: {fileID: 1410081155}
   - component: {fileID: 1410081158}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36859,7 +36859,7 @@ SpriteRenderer:
   m_Size: {x: 4, y: 4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &1410081157
