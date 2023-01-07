@@ -90,4 +90,5 @@ public class Weapon : MonoBehaviour
             item.Damage(10f);
         }
     }
+
 }
